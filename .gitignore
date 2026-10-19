@@ -1,0 +1,5 @@
+# Local tooling: deploy/build scripts and the YouTube kit stay private (not published to GitHub Pages)
+scripts/
+*.wav
+*.log
+.DS_Store
