@@ -587,7 +587,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <p><strong>Latest model test — Swift 1.5 (2026-10-20, running overnight):</strong> UkisAI's Swift 1.5 builds of the same models, tuned to think less at the same quality.</p>
 <ul>
 <li>Swift 1.5 Qwen3.8-Flash-Next GSQ-RCO IQ2_XS (68 GB, experts in RAM, <code>-ncmoe 36</code> on the 16 GB card): <strong>24 of 24 seeded bugs</strong> with thinking off, in 5.8 minutes — the best score measured on this rig (the current Coder deep tier: 22 of 24; the old GLM tier needed 26 minutes for 24). On the 80-item set it scored <strong>0.975 (78 of 80)</strong>, tying the best result on this rig (Coder deep tier: 0.963). It was slower here (31 min, ~5.5 tok/s) but measured while other model downloads were writing to the same SSD the experts stream from; a clean speed run follows, with a thinking-on run and three larger quants.</li>
-<li>Swift 1.5 Flash-Next IQ3_XXS (76 GB, <code>-ncmoe 40</code>): also 24 of 24, but slower (9.7 minutes, ~4.8 tok/s) — the smaller IQ2_XS gets the same score faster, so it stays the pick among the Swift builds.</li>
+<li>Swift 1.5 Flash-Next IQ3_XXS (76 GB, <code>-ncmoe 40</code>): also 24 of 24 and 78 of 80, but slower (9.7 and 34 minutes, ~4.5-4.8 tok/s) — the smaller IQ2_XS gets the same score faster, so it stays the pick among the Swift builds.</li>
 <li>Swift 1.5 Qwen3.8-27B IQ3_S + MTP (12.1 GB, fully on the 16 GB card, ~52-64 tok/s) on 10 seeded bugs: <strong>low effort found 9 of 10</strong> in 7 minutes; the template's default xhigh found 8 in 16 minutes with twice the thinking (44K tokens); thinking off found 8 in 26 seconds. On this kind of bug hunt, xhigh bought nothing — low effort is the sweet spot, and thinking off is the fast path. The template's default really is xhigh.</li>
 <li>Base Qwen3.8-27B vs Swift 1.5 on the same 10 bugs: at <strong>xhigh both found 8, and Swift needed 35% fewer thinking tokens</strong> (44K vs 68K; 16 vs 24 minutes) — close to the 42% UkisAI reports. At <strong>low effort the base model was the best option of all: 9 of 10 in 4 minutes</strong> with only 12K thinking tokens (Swift: 9 of 10, 22K tokens, 7 minutes). Thinking off: 8 of 10 in 26 seconds for both. Takeaway for a 16 GB card: use low effort for bug hunts, xhigh only when you've measured it helps, and Swift if you do run xhigh.</li>
 </ul>
@@ -2167,10 +2167,10 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 </tr>
 <tr>
 <td>Swift-1.5 Qwen3.8-Flash-Next GSQ-RCO IQ3_XXS ncmoe40 (nv+ram, fast SSD) nothink</td>
-<td style="text-align: right;">1.000</td>
-<td>bugauto 1.00</td>
-<td style="text-align: right;">579</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.975</td>
+<td>bugbig 0.97</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">4</td>
 </tr>
 </tbody>
 </table></div>
