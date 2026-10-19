@@ -590,6 +590,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <li>Swift 1.5 Flash-Next IQ3_XXS (76 GB, <code>-ncmoe 40</code>): also 24 of 24 and 78 of 80, but slower (9.7 and 34 minutes, ~4.5-4.8 tok/s) — the smaller IQ2_XS gets the same score faster, so it stays the pick among the Swift builds.</li>
 <li>Swift 1.5 Qwen3.8-27B IQ3_S + MTP (12.1 GB, fully on the 16 GB card, ~52-64 tok/s) on 10 seeded bugs: <strong>low effort found 9 of 10</strong> in 7 minutes; the template's default xhigh found 8 in 16 minutes with twice the thinking (44K tokens); thinking off found 8 in 26 seconds. On this kind of bug hunt, xhigh bought nothing — low effort is the sweet spot, and thinking off is the fast path. The template's default really is xhigh.</li>
 <li>Base Qwen3.8-27B vs Swift 1.5 on the same 10 bugs: at <strong>xhigh both found 8, and Swift needed 35% fewer thinking tokens</strong> (44K vs 68K; 16 vs 24 minutes) — close to the 42% UkisAI reports. At <strong>low effort the base model was the best option of all: 9 of 10 in 4 minutes</strong> with only 12K thinking tokens (Swift: 9 of 10, 22K tokens, 7 minutes). Thinking off: 8 of 10 in 26 seconds for both. Takeaway for a 16 GB card: use low effort for bug hunts, xhigh only when you've measured it helps, and Swift if you do run xhigh.</li>
+<li>Swift 1.5 Qwen3.8-27B IQ3_XXS + MTP (10.4 GB) fits <strong>entirely on the 16 GB card with a 64K context</strong>: it found 12 of 12 functions in a 56K-token prompt in 83 seconds (reading at ~715 tok/s, writing at ~50 tok/s), and matched the larger IQ3_S on the bug sets (8 of 10 at xhigh and with thinking off). A strong long-context option that needs no RAM offload.</li>
 </ul>
 <p><strong>Where the local tiers shine (measured overnight, 2026-10-19/20, inside real QA work):</strong> Claude teammates handed specific jobs to the local models and checked every answer against a known result.</p>
 <ul>
@@ -2171,6 +2172,20 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td>bugbig 0.97</td>
 <td style="text-align: right;">2011</td>
 <td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>Swift-1.5 Qwen3.8-27B IQ3_XXS-mtp (nv 64k) xhigh</td>
+<td style="text-align: right;">0.800</td>
+<td>bugspot 0.80, bughard 0.80</td>
+<td style="text-align: right;">963</td>
+<td style="text-align: right;">55</td>
+</tr>
+<tr>
+<td>Swift-1.5 Qwen3.8-27B IQ3_XXS-mtp (nv 64k) nothink</td>
+<td style="text-align: right;">0.800</td>
+<td>bugspot 1.00, bughard 0.60</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">67</td>
 </tr>
 </tbody>
 </table></div>
