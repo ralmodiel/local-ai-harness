@@ -584,6 +584,10 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <li>Diff reviews now get the commit messages along with the diff. Without them, every model reported the commit's intended changes as regressions.</li>
 <li>The NPU stays idle in production: its best model (Qwen3.6-35B) is weaker and slower than the GPU tiers and would pin 22 GB of RAM next to the app stack.</li>
 </ul>
+<p><strong>Latest model test — Swift 1.5 (2026-10-20, running overnight):</strong> UkisAI's Swift 1.5 builds of the same models, tuned to think less at the same quality.</p>
+<ul>
+<li>Swift 1.5 Qwen3.8-Flash-Next GSQ-RCO IQ2_XS (68 GB, experts in RAM, <code>-ncmoe 36</code> on the 16 GB card): <strong>24 of 24 seeded bugs</strong> with thinking off, in 5.8 minutes — the best score measured on this rig (the current Coder deep tier: 22 of 24; the old GLM tier needed 26 minutes for 24). The 80-item set, a thinking-on run, and three larger quants follow.</li>
+</ul>
 <p><strong>Where the local tiers shine (measured overnight, 2026-10-19/20, inside real QA work):</strong> Claude teammates handed specific jobs to the local models and checked every answer against a known result.</p>
 <ul>
 <li><strong>Turning a confirmed bug into a runnable repro script.</strong> For 17 bugs Claude had confirmed, the 5060 Ti's Gemma 4 wrote bash + curl scripts that all reproduced the bug; 8 ran as-is, the rest needed a small fix (a stray quote, a mistyped id). Seconds per script, zero Claude tokens for the drafting. Read each one before running it: one draft appended a clean-up <code>rm -rf</code> of the working folder.</li>
@@ -2101,6 +2105,13 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td>bugauto 0.92</td>
 <td style="text-align: right;">182</td>
 <td style="text-align: right;">17</td>
+</tr>
+<tr>
+<td>Swift-1.5 Qwen3.8-Flash-Next GSQ-RCO IQ2_XS ncmoe36 (nv+ram, fast SSD) nothink</td>
+<td style="text-align: right;">1.000</td>
+<td>bugauto 1.00</td>
+<td style="text-align: right;">346</td>
+<td style="text-align: right;">10</td>
 </tr>
 </tbody>
 </table></div>
