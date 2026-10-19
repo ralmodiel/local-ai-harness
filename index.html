@@ -589,6 +589,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <li>Swift 1.5 Qwen3.8-Flash-Next GSQ-RCO IQ2_XS (68 GB, experts in RAM, <code>-ncmoe 36</code> on the 16 GB card): <strong>24 of 24 seeded bugs</strong> with thinking off, in 5.8 minutes — the best score measured on this rig (the current Coder deep tier: 22 of 24; the old GLM tier needed 26 minutes for 24). On the 80-item set it scored <strong>0.975 (78 of 80)</strong>, tying the best result on this rig (Coder deep tier: 0.963). A clean speed run (nothing else writing to the SSD) put it level with the current deep tier on output speed: 23.6 vs 26.1 tok/s (it reads long prompts slower: 161 vs 270 tok/s) — the earlier slow timings came from model downloads sharing the disk. More accurate at nearly the same speed: it's now an opt-in deep tier (<code>llm deep start swift</code>).</li>
 <li>Swift 1.5 Flash-Next IQ3_XXS (76 GB, <code>-ncmoe 40</code>): also 24 of 24 and 78 of 80, but slower (9.7 and 34 minutes, ~4.5-4.8 tok/s) — the smaller IQ2_XS gets the same score faster, so it stays the pick among the Swift builds.</li>
 <li>Swift 1.5 Flash-Next Q2_0 (66.5 GB, <code>-ncmoe 32</code>): 23 of 24 and 72 of 80 seeded bugs — clearly below IQ2_XS (24 and 78) at a similar size, so IQ2_XS remains the Swift pick.</li>
+<li>Swift 1.5 Flash-Next IQ3_S (84 GB, the largest, <code>-ncmoe 40</code>): 24 of 24 and 78 of 80 — no better than IQ2_XS and slower (~6 tok/s). <strong>Verdict across all four Swift quants: IQ2_XS is the one to run</strong> (best score, smallest of the top scorers, as fast as the current deep tier).</li>
 <li>Swift 1.5 Qwen3.8-27B IQ3_S + MTP (12.1 GB, fully on the 16 GB card, ~52-64 tok/s) on 10 seeded bugs: <strong>low effort found 9 of 10</strong> in 7 minutes; the template's default xhigh found 8 in 16 minutes with twice the thinking (44K tokens); thinking off found 8 in 26 seconds. On this kind of bug hunt, xhigh bought nothing — low effort is the sweet spot, and thinking off is the fast path. The template's default really is xhigh.</li>
 <li>Base Qwen3.8-27B vs Swift 1.5 on the same 10 bugs: at <strong>xhigh both found 8, and Swift needed 35% fewer thinking tokens</strong> (44K vs 68K; 16 vs 24 minutes) — close to the 42% UkisAI reports. At <strong>low effort the base model was the best option of all: 9 of 10 in 4 minutes</strong> with only 12K thinking tokens (Swift: 9 of 10, 22K tokens, 7 minutes). Thinking off: 8 of 10 in 26 seconds for both. Takeaway for a 16 GB card: use low effort for bug hunts, xhigh only when you've measured it helps, and Swift if you do run xhigh.</li>
 <li>Swift 1.5 Qwen3.8-27B IQ3_XXS + MTP (10.4 GB) fits <strong>entirely on the 16 GB card with a 64K context</strong>: it found 12 of 12 functions in a 56K-token prompt in 83 seconds (reading at ~715 tok/s, writing at ~50 tok/s), and matched the larger IQ3_S on the bug sets (8 of 10 at xhigh and with thinking off). A strong long-context option that needs no RAM offload.</li>
@@ -2194,6 +2195,13 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td>bugbig 0.90</td>
 <td style="text-align: right;">2269</td>
 <td style="text-align: right;">9</td>
+</tr>
+<tr>
+<td>Swift-1.5 Qwen3.8-Flash-Next GSQ-RCO IQ3_S ncmoe40 (nv+ram, fast SSD) nothink</td>
+<td style="text-align: right;">0.975</td>
+<td>bugbig 0.97</td>
+<td style="text-align: right;">1594</td>
+<td style="text-align: right;">6</td>
 </tr>
 </tbody>
 </table></div>
