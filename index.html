@@ -263,6 +263,16 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td style="text-align: right;">~60–64</td>
 </tr>
 <tr>
+<td>Swift 1.5 Qwen3.8-27B IQ3_XXS + MTP, kunthawat's community build, low thinking effort</td>
+<td>NVIDIA only (2 × 32K, or 1 × 100K)</td>
+<td style="text-align: right;">0.858 (no thinking)</td>
+<td style="text-align: right;"><strong>0.975</strong> (24-item set: 0.958)</td>
+<td style="text-align: right;">21 (22 with thinking off)</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.964</td>
+<td style="text-align: right;">~60–66</td>
+</tr>
+<tr>
 <td>Qwen3.8-27B GSQ-RCO IQ3_XXS + MTP (base), low thinking effort</td>
 <td>NVIDIA only (2 × 32K)</td>
 <td style="text-align: right;">—</td>
@@ -706,6 +716,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <li>Swift 1.5 Qwen3.8-27B IQ3_XXS + MTP (10.4 GB) fits <strong>entirely on the 16 GB card with a 64K context</strong>: it found 12 of 12 functions in a 56K-token prompt in 83 seconds (reading at ~715 tok/s, writing at ~50 tok/s), and matched the larger IQ3_S on the bug sets (8 of 10 at xhigh and with thinking off). A strong long-context option that needs no RAM offload.</li>
 <li><strong>Full test suite, Swift 1.5 27B IQ3_XXS (10.4 GB, entirely on the 16 GB card, with vision):</strong> at low thinking effort it found <strong>24 of 24 and 78 of 80 seeded bugs</strong> and wrote <strong>22 of 23 scripts</strong> — matching the best scores on this rig (the 68 GB Flash-Next deep tier models need system RAM for the same scores), at ~64 tok/s instead of ~24. Screen reading 0.965, level with the current tiers. Thinking off it is quick and solid (0.840 suite, 72 of 80 bugs). Its one weak spot is writing unit tests (2.5 of 9), where the fast tier stays ahead (7). That run of 104 tasks took 38 minutes, so it suits careful review work rather than quick jobs.</li>
 <li><strong>Same test, base Qwen3.8-27B IQ3_XXS at low effort:</strong> 23 of 24 and 78 of 80 bugs, <strong>23 of 23 scripts</strong>, in 39 minutes with about the same thinking (129K vs 127K tokens). So the jump comes from switching low-effort thinking on, not from the Swift fine-tune: any Qwen3.8-27B at IQ3_XXS gives a 16 GB card deep-tier accuracy at ~63 tok/s with no system RAM. Swift's edge shows at xhigh, where it thinks 35% less.</li>
+<li><strong>Community build of the same quant — kunthawat's Swift 1.5 27B IQ3_XXS (10.2 GB, Unsloth-style imatrix):</strong> as good as UkisAI's own file and a little better without thinking: 0.858 vs 0.840 on the suite, 74 vs 72 of 80 bugs, 22 vs 19 scripts. At low effort it found 23 of 24 and 78 of 80 with 23% less thinking (98K vs 127K tokens, 31 vs 38 minutes). Its author's 16 GB profile (one slot, <strong>100K context</strong>, 4-bit KV cache) really fits: it found 12 of 12 functions in an 82K-token prompt in 2 minutes, all on the GPU.</li>
 </ul>
 <p><strong>Where the local tiers shine (measured overnight, 2026-10-19/20, inside real QA work):</strong> Claude teammates handed specific jobs to the local models and checked every answer against a known result.</p>
 <ul>
@@ -2343,6 +2354,27 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td>bugauto 0.96, bugbig 0.97, scriptgen 1.00, scripthard 1.00</td>
 <td style="text-align: right;">2358</td>
 <td style="text-align: right;">63</td>
+</tr>
+<tr>
+<td>kunthawat Swift-1.5 Qwen3.8-27B IQ3_XXS +mtp (nv, prod shape 2x32k+mmproj)</td>
+<td style="text-align: right;">0.925</td>
+<td>bugbig 0.93</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr>
+<td>kunthawat Swift-1.5 Qwen3.8-27B IQ3_XXS +mtp (nv, prod shape 2x32k+mmproj) tests-4096</td>
+<td style="text-align: right;">0.222</td>
+<td>testgen 0.22</td>
+<td style="text-align: right;">334</td>
+<td style="text-align: right;">70</td>
+</tr>
+<tr>
+<td>kunthawat Swift-1.5 Qwen3.8-27B IQ3_XXS +mtp (nv, prod shape 2x32k+mmproj) low-effort</td>
+<td style="text-align: right;">0.940</td>
+<td>bugauto 0.96, bugbig 0.97, scriptgen 0.92, scripthard 0.91</td>
+<td style="text-align: right;">1881</td>
+<td style="text-align: right;">60</td>
 </tr>
 </tbody>
 </table></div>
