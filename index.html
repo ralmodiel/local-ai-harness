@@ -166,7 +166,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td>RTX 5060 Ti, on demand</td>
 <td>Deep tier: long prompts, whole-commit reviews, background and overnight jobs</td>
 <td><strong>Muse Glimmer 30B</strong> (Meta), medium reasoning</td>
-<td>80/80 seeded bugs; the only local model that caught a real review blocker; 64K context on the GPU alone</td>
+<td>24/24 and 78/80 seeded bugs (80/80 at low reasoning); the only local model that caught a real review blocker; 64K context on the GPU alone</td>
 <td>8 other models</td>
 </tr>
 </tbody>
@@ -652,8 +652,8 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <ul>
 <li><strong>3rd place:</strong> Qwen3.8-Flash-Next GSQ-RCO Coder IQ1_M (177B, experts in system RAM): 22/24 and 77/80 seeded bugs, the fastest prompt reading (<code>llm deep start coder</code>), but no real blocker found.</li>
 <li><strong>2nd place:</strong> Swift 1.5 Qwen3.8-Flash-Next GSQ-RCO IQ2_XS (UkisAI, 177B): 24/24 and 78/80 seeded bugs, but no real blocker found either, and it needs about 68 GB of system RAM (<code>llm deep start swift</code>).</li>
-<li><strong>Winner: Muse Glimmer 30B (Meta), medium reasoning, with its DFlash drafter: 80/80 seeded bugs, the only local model that caught a real review blocker, 64K context on the GPU alone (13 GB).</strong></li>
-<li><strong>Why:</strong> Deep jobs run in the background or overnight, so quality beats speed here, and Glimmer had the best quality on both planted and real bugs while leaving system RAM free. <em>It beat 8 other models for this job.</em></li>
+<li><strong>Winner: Muse Glimmer 30B (Meta), medium reasoning, with its DFlash drafter: 24/24 and 78/80 seeded bugs (80/80 at low reasoning), the only local model that caught a real review blocker, 64K context on the GPU alone (13 GB).</strong></li>
+<li><strong>Why:</strong> Deep jobs run in the background or overnight, so quality beats speed here, and Glimmer tied Swift on planted bugs, beat every candidate on real ones, and leaves system RAM free. <em>It beat 8 other models for this job.</em></li>
 </ul>
 <p><strong>Real commits, verified claims.</strong> Seeded bugs are planted; real review blockers are subtle. Seven real commits from the app (four with a blocker that Claude reviewers had confirmed and fixed, three clean) went to the deep candidates with the same neutral prompt, and an independent Claude agent checked every bug claim against the code:</p>
 <div class="table-wrap wide"><table>
@@ -3012,6 +3012,13 @@ cd .. &amp;&amp; ./start-here.sh --model glm-5.2 --yes --backend cpu --dir &lt;m
 <td>testgen 0.56</td>
 <td style="text-align: right;">347</td>
 <td style="text-align: right;">30</td>
+</tr>
+<tr>
+<td>Muse-Glimmer-30B UD-IQ3_XXS +dflash (nv 64k) strength=medium</td>
+<td style="text-align: right;">0.988</td>
+<td>bugauto 1.00, bugbig 0.97</td>
+<td style="text-align: right;">2548</td>
+<td style="text-align: right;">52</td>
 </tr>
 </tbody>
 </table></div>
