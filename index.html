@@ -373,6 +373,16 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td style="text-align: right;"></td>
 </tr>
 <tr>
+<td>gpt-oss-20b MXFP4, low effort</td>
+<td>NVIDIA (2 × 32K)</td>
+<td style="text-align: right;">0.884</td>
+<td style="text-align: right;">0.812</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;"><strong>7</strong></td>
+<td style="text-align: right;">— (no vision)</td>
+<td style="text-align: right;">~128 (~138 with EAGLE3)</td>
+</tr>
+<tr>
 <td>DeepSeek-V4-Flash UD-IQ2_XXS (deep-tier candidate)</td>
 <td>NVIDIA + RAM</td>
 <td style="text-align: right;">0.942<sup class="fn">*</sup></td>
@@ -729,6 +739,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <li><strong>Community build of the same quant — kunthawat's Swift 1.5 27B IQ3_XXS (10.2 GB, Unsloth-style imatrix):</strong> as good as UkisAI's own file and a little better without thinking: 0.858 vs 0.840 on the suite, 74 vs 72 of 80 bugs, 22 vs 19 scripts. At low effort it found 23 of 24 and 78 of 80 with 23% less thinking (98K vs 127K tokens, 31 vs 38 minutes). Its author's 16 GB profile (one slot, <strong>100K context</strong>, 4-bit KV cache) really fits: it found 12 of 12 functions in an 82K-token prompt in 2 minutes, all on the GPU.</li>
 <li><strong>New model: Meta's Muse Glimmer 30B</strong> (dense 29.6B with a vision encoder, August 2026, Apache-2.0), as Unsloth's UD-IQ3_XXS (13.1 GB) fully on the 16 GB card. At low reasoning strength it found <strong>all 80 of 80 seeded bugs — the first perfect score on this rig</strong> — plus 23 of 24 on the smaller set, 21 of 23 scripts and <strong>6 of 9 unit tests</strong> (the best of any big model here; Gemma 4 has 7). It always thinks, so it writes at ~30 tok/s, but its <strong>DFlash drafter nearly doubles that to ~57 tok/s</strong> (70% of drafted tokens accepted, same output). Screen reading 0.931, a step below the current tiers. The strongest bug hunter yet that runs on the GPU alone.</li>
 <li><strong>Optimization tested: llama.cpp's new GPU cache for MoE experts kept in RAM</strong> (<code>--moe-cache-mib</code>, merged 2026-10-07; up to 2.2× on Flash-Next on desktop cards). On this rig the existing fixed layout stays fastest (Coder 28.7 tok/s, Swift 32.8); every cache setting was slower (15–28 tok/s). The likely reason is the eGPU link: the card hangs off OCuLink (PCIe x4), so each cache miss costs about 4× what it does in a desktop x16 slot. Worth re-testing with a card in an x16 slot.</li>
+<li><strong>gpt-oss-20b on the GPU</strong> (12.1 GB MXFP4, low effort): close to the fast tier, and as good at unit tests (7 of 9), with very fast prompt reading (~5,000 tok/s); 65 of 80 bugs and ~128 tok/s keep Gemma 4 (70 of 80, ~200 tok/s, plus vision) in the fast tier. Its EAGLE3 drafter added a modest 7% (138 tok/s).</li>
 </ul>
 <p><strong>Where the local tiers shine (measured overnight, 2026-10-19/20, inside real QA work):</strong> Claude teammates handed specific jobs to the local models and checked every answer against a known result.</p>
 <ul>
