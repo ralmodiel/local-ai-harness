@@ -273,6 +273,16 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td style="text-align: right;">~56–64</td>
 </tr>
 <tr>
+<td><strong>Swift 1.5 Qwen3.8-27B IQ3_XXS + MTP</strong>, low thinking effort</td>
+<td>NVIDIA only (2 × 32K)</td>
+<td style="text-align: right;">0.840 (no thinking)</td>
+<td style="text-align: right;"><strong>0.975</strong> (24-item set: <strong>1.000</strong>)</td>
+<td style="text-align: right;"><strong>22</strong></td>
+<td style="text-align: right;">2.5<sup class="fn">¶</sup></td>
+<td style="text-align: right;">0.965</td>
+<td style="text-align: right;">~60–64</td>
+</tr>
+<tr>
 <td>GLM-5.3-Flash UD-IQ2_XXS (former deep tier, deleted)</td>
 <td>NVIDIA + RAM</td>
 <td style="text-align: right;"><strong>0.971</strong><sup class="fn">*</sup></td>
@@ -594,6 +604,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <li>Swift 1.5 Qwen3.8-27B IQ3_S + MTP (12.1 GB, fully on the 16 GB card, ~52-64 tok/s) on 10 seeded bugs: <strong>low effort found 9 of 10</strong> in 7 minutes; the template's default xhigh found 8 in 16 minutes with twice the thinking (44K tokens); thinking off found 8 in 26 seconds. On this kind of bug hunt, xhigh bought nothing — low effort is the sweet spot, and thinking off is the fast path. The template's default really is xhigh.</li>
 <li>Base Qwen3.8-27B vs Swift 1.5 on the same 10 bugs: at <strong>xhigh both found 8, and Swift needed 35% fewer thinking tokens</strong> (44K vs 68K; 16 vs 24 minutes) — close to the 42% UkisAI reports. At <strong>low effort the base model was the best option of all: 9 of 10 in 4 minutes</strong> with only 12K thinking tokens (Swift: 9 of 10, 22K tokens, 7 minutes). Thinking off: 8 of 10 in 26 seconds for both. Takeaway for a 16 GB card: use low effort for bug hunts, xhigh only when you've measured it helps, and Swift if you do run xhigh.</li>
 <li>Swift 1.5 Qwen3.8-27B IQ3_XXS + MTP (10.4 GB) fits <strong>entirely on the 16 GB card with a 64K context</strong>: it found 12 of 12 functions in a 56K-token prompt in 83 seconds (reading at ~715 tok/s, writing at ~50 tok/s), and matched the larger IQ3_S on the bug sets (8 of 10 at xhigh and with thinking off). A strong long-context option that needs no RAM offload.</li>
+<li><strong>Full test suite, Swift 1.5 27B IQ3_XXS (10.4 GB, entirely on the 16 GB card, with vision):</strong> at low thinking effort it found <strong>24 of 24 and 78 of 80 seeded bugs</strong> and wrote <strong>22 of 23 scripts</strong> — matching the best scores on this rig (the 68 GB Flash-Next deep tier models need system RAM for the same scores), at ~64 tok/s instead of ~24. Screen reading 0.965, level with the current tiers. Thinking off it is quick and solid (0.840 suite, 72 of 80 bugs). Its one weak spot is writing unit tests (2.5 of 9), where the fast tier stays ahead (7). That run of 104 tasks took 38 minutes, so it suits careful review work rather than quick jobs.</li>
 </ul>
 <p><strong>Where the local tiers shine (measured overnight, 2026-10-19/20, inside real QA work):</strong> Claude teammates handed specific jobs to the local models and checked every answer against a known result.</p>
 <ul>
@@ -2217,6 +2228,13 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td>testgen 0.28</td>
 <td style="text-align: right;">373</td>
 <td style="text-align: right;">73</td>
+</tr>
+<tr>
+<td>Swift-1.5 Qwen3.8-27B IQ3_XXS +mtp (nv, prod shape 2x32k+mmproj) low-effort</td>
+<td style="text-align: right;">0.971</td>
+<td>bugauto 1.00, bugbig 0.97, scriptgen 1.00, scripthard 0.91</td>
+<td style="text-align: right;">2265</td>
+<td style="text-align: right;">64</td>
 </tr>
 </tbody>
 </table></div>
