@@ -586,6 +586,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 </ul>
 <p><strong>Latest model test — Swift 1.5 (2026-10-20, all builds measured):</strong> UkisAI's Swift 1.5 builds of the same models, tuned to think less at the same quality.</p>
 <ul>
+<li>Credits: the Swift 1.5 reasoning fine-tunes of Qwen3.8 (27B and Flash-Next) and the GSQ-RCO GGUF files tested here are UkisAI's, downloaded from their Hugging Face repos <a href="https://huggingface.co/ukisai/Swift-1.5-Qwen3.8-27B-GSQ-RCO-GGUF">ukisai/Swift-1.5-Qwen3.8-27B-GSQ-RCO-GGUF</a> and <a href="https://huggingface.co/ukisai/Swift-1.5-Qwen3.8-Flash-Next-GSQ-RCO-GGUF">ukisai/Swift-1.5-Qwen3.8-Flash-Next-GSQ-RCO-GGUF</a>. Community quantizations of the same models (for example kunthawat's IQ3_XXS build of the 27B) were not part of these tests.</li>
 <li>Swift 1.5 Qwen3.8-Flash-Next GSQ-RCO IQ2_XS (68 GB, experts in RAM, <code>-ncmoe 36</code> on the 16 GB card): <strong>24 of 24 seeded bugs</strong> with thinking off, in 5.8 minutes — the best score measured on this rig (the current Coder deep tier: 22 of 24; the old GLM tier needed 26 minutes for 24). On the 80-item set it scored <strong>0.975 (78 of 80)</strong>, tying the best result on this rig (Coder deep tier: 0.963). A clean speed run (nothing else writing to the SSD) put it level with the current deep tier on output speed: 23.6 vs 26.1 tok/s (it reads long prompts slower: 161 vs 270 tok/s) — the earlier slow timings came from model downloads sharing the disk. More accurate at nearly the same speed: it's now an opt-in deep tier (<code>llm deep start swift</code>).</li>
 <li>Swift 1.5 Flash-Next IQ3_XXS (76 GB, <code>-ncmoe 40</code>): also 24 of 24 and 78 of 80, but slower (9.7 and 34 minutes, ~4.5-4.8 tok/s) — the smaller IQ2_XS gets the same score faster, so it stays the pick among the Swift builds.</li>
 <li>Swift 1.5 Flash-Next Q2_0 (66.5 GB, <code>-ncmoe 32</code>): 23 of 24 and 72 of 80 seeded bugs — clearly below IQ2_XS (24 and 78) at a similar size, so IQ2_XS remains the Swift pick.</li>
@@ -2202,6 +2203,20 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td>bugbig 0.97</td>
 <td style="text-align: right;">1594</td>
 <td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td>Swift-1.5 Qwen3.8-27B IQ3_XXS +mtp (nv, prod shape 2x32k+mmproj)</td>
+<td style="text-align: right;">0.900</td>
+<td>bugbig 0.90</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr>
+<td>Swift-1.5 Qwen3.8-27B IQ3_XXS +mtp (nv, prod shape 2x32k+mmproj) tests-4096</td>
+<td style="text-align: right;">0.278</td>
+<td>testgen 0.28</td>
+<td style="text-align: right;">373</td>
+<td style="text-align: right;">73</td>
 </tr>
 </tbody>
 </table></div>
