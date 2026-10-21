@@ -124,9 +124,9 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <div class="media"><div class="yt-embed"><iframe src="https://www.youtube-nocookie.com/embed/U8kv-bvX-ls?cc_load_policy=0&amp;rel=0" title="Video walkthrough" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><a class="yt" href="https://youtu.be/U8kv-bvX-ls" rel="noopener">&#9654; Watch on YouTube</a></div>
 </div></header>
 <div class="wrap layout">
-<aside class="toc-side"><nav class="toc" aria-label="Contents"><p class="toc-title">Contents</p><ul><li><a href="#the-short-version">The short version</a></li><li><a href="#the-hardware">The hardware</a></li><li><a href="#the-contenders">The contenders</a></li><li><a href="#how-every-model-was-tested">How every model was tested</a></li><li><a href="#one-countdown-per-chip">One countdown per chip</a><ul><li><a href="#nvidia-rtx-5060-ti-16-gb-the-fast-tier">NVIDIA RTX 5060 Ti 16 GB: the fast tier</a></li><li><a href="#radeon-890m-igpu-the-best-tier">Radeon 890M iGPU: the best tier</a></li><li><a href="#radeon-rx-7600-8-gb-the-third-opinion">Radeon RX 7600 8 GB: the third opinion</a></li><li><a href="#xdna2-npu-built-into-the-ryzen-chip-background-jobs">XDNA2 NPU (built into the Ryzen chip): background jobs</a></li><li><a href="#bonus-round-the-rtx-5060-tis-deep-mode-the-strongest-reviewer-for-background-jobs">Bonus round: the RTX 5060 Ti's deep mode, the strongest reviewer for background jobs</a></li></ul></li><li><a href="#the-final-lineup">The final lineup</a></li><li><a href="#engines-compared-llamacpp-cuda-vulkan-rocm-ollama-strata-magnitude-and-more">Engines compared: llama.cpp (CUDA, Vulkan, ROCm), Ollama, Strata, Magnitude and more</a></li><li><a href="#where-local-ai-pays-off">Where local AI pays off</a></li><li><a href="#whats-next">What's next</a></li><li><a href="#recreate-this-setup">Recreate this setup</a><ul><li><a href="#1-system-packages-needs-sudo-run-them-in-your-own-terminal-not-through-an-ai-agent">1. System packages (needs sudo; run them in your own terminal, not through an AI agent)</a></li><li><a href="#2-llamacpp-prebuilt-binaries-vulkan-for-amd-cuda-for-nvidia">2. llama.cpp prebuilt binaries (Vulkan for AMD, CUDA for NVIDIA)</a></li><li><a href="#3-models-hugging-face-resumable">3. Models (Hugging Face, resumable)</a></li><li><a href="#4-servers-systemd-user-units">4. Servers (systemd user units)</a></li><li><a href="#5-find-your-own-offload-point-for-a-big-moe">5. Find your own offload point for a big MoE</a></li><li><a href="#6-colibri-only-if-you-have-lots-of-ram-and-fast-or-multiple-nvme-drives">6. Colibri (only if you have lots of RAM and fast or multiple NVMe drives)</a></li><li><a href="#7-wire-it-into-claude-code-or-any-agent">7. Wire it into Claude Code (or any agent)</a></li><li><a href="#8-measure-speed-and-quality-before-switching-models">8. Measure speed AND quality before switching models</a></li></ul></li><li><a href="#lab-notebook-every-result-and-log">Lab notebook: every result and log</a></li><li><a href="#sources">Sources</a></li></ul></nav></aside>
+<aside class="toc-side"><nav class="toc" aria-label="Contents"><p class="toc-title">Contents</p><ul><li><a href="#the-short-version">The short version</a></li><li><a href="#the-hardware">The hardware</a></li><li><a href="#the-contenders">The contenders</a></li><li><a href="#how-every-model-was-tested">How every model was tested</a></li><li><a href="#one-countdown-per-chip">One countdown per chip</a><ul><li><a href="#nvidia-rtx-5060-ti-16-gb-the-fast-tier">NVIDIA RTX 5060 Ti 16 GB: the fast tier</a></li><li><a href="#radeon-890m-igpu-the-best-tier">Radeon 890M iGPU: the best tier</a></li><li><a href="#radeon-rx-7600-8-gb-the-third-opinion">Radeon RX 7600 8 GB: the third opinion</a></li><li><a href="#xdna2-npu-built-into-the-ryzen-chip-background-jobs">XDNA2 NPU (built into the Ryzen chip): background jobs</a></li><li><a href="#bonus-round-the-rtx-5060-tis-deep-mode-the-strongest-reviewer-for-background-jobs">Bonus round: the RTX 5060 Ti's deep mode, the strongest reviewer for background jobs</a></li></ul></li><li><a href="#the-final-lineup">The final lineup</a></li><li><a href="#engines-compared-llamacpp-cuda-vulkan-rocm-ollama-strata-magnitude-and-more">Engines compared: llama.cpp (CUDA, Vulkan, ROCm), Ollama, Strata, Magnitude and more</a></li><li><a href="#where-local-ai-pays-off">Where local AI pays off</a></li><li><a href="#does-a-hybrid-ai-harness-really-save-claude-tokens-measured">Does a hybrid AI harness really save Claude tokens? (measured)</a><ul><li><a href="#is-a-16-gb-gpu-worth-it-or-is-the-cpu-enough">Is a 16 GB GPU worth it, or is the CPU enough?</a></li></ul></li><li><a href="#finding-the-sweet-spot-quality-vs-savings">Finding the sweet spot: quality vs savings</a></li><li><a href="#whats-next">What's next</a></li><li><a href="#recreate-this-setup">Recreate this setup</a><ul><li><a href="#1-system-packages-needs-sudo-run-them-in-your-own-terminal-not-through-an-ai-agent">1. System packages (needs sudo; run them in your own terminal, not through an AI agent)</a></li><li><a href="#2-llamacpp-prebuilt-binaries-vulkan-for-amd-cuda-for-nvidia">2. llama.cpp prebuilt binaries (Vulkan for AMD, CUDA for NVIDIA)</a></li><li><a href="#3-models-hugging-face-resumable">3. Models (Hugging Face, resumable)</a></li><li><a href="#4-servers-systemd-user-units">4. Servers (systemd user units)</a></li><li><a href="#5-find-your-own-offload-point-for-a-big-moe">5. Find your own offload point for a big MoE</a></li><li><a href="#6-colibri-only-if-you-have-lots-of-ram-and-fast-or-multiple-nvme-drives">6. Colibri (only if you have lots of RAM and fast or multiple NVMe drives)</a></li><li><a href="#7-wire-it-into-claude-code-or-any-agent">7. Wire it into Claude Code (or any agent)</a></li><li><a href="#8-measure-speed-and-quality-before-switching-models">8. Measure speed AND quality before switching models</a></li></ul></li><li><a href="#lab-notebook-every-result-and-log">Lab notebook: every result and log</a></li><li><a href="#sources">Sources</a></li></ul></nav></aside>
 <main class="doc">
-<details class="toc-mobile"><summary>Contents</summary><nav class="toc" aria-label="Contents"><ul><li><a href="#the-short-version">The short version</a></li><li><a href="#the-hardware">The hardware</a></li><li><a href="#the-contenders">The contenders</a></li><li><a href="#how-every-model-was-tested">How every model was tested</a></li><li><a href="#one-countdown-per-chip">One countdown per chip</a><ul><li><a href="#nvidia-rtx-5060-ti-16-gb-the-fast-tier">NVIDIA RTX 5060 Ti 16 GB: the fast tier</a></li><li><a href="#radeon-890m-igpu-the-best-tier">Radeon 890M iGPU: the best tier</a></li><li><a href="#radeon-rx-7600-8-gb-the-third-opinion">Radeon RX 7600 8 GB: the third opinion</a></li><li><a href="#xdna2-npu-built-into-the-ryzen-chip-background-jobs">XDNA2 NPU (built into the Ryzen chip): background jobs</a></li><li><a href="#bonus-round-the-rtx-5060-tis-deep-mode-the-strongest-reviewer-for-background-jobs">Bonus round: the RTX 5060 Ti's deep mode, the strongest reviewer for background jobs</a></li></ul></li><li><a href="#the-final-lineup">The final lineup</a></li><li><a href="#engines-compared-llamacpp-cuda-vulkan-rocm-ollama-strata-magnitude-and-more">Engines compared: llama.cpp (CUDA, Vulkan, ROCm), Ollama, Strata, Magnitude and more</a></li><li><a href="#where-local-ai-pays-off">Where local AI pays off</a></li><li><a href="#whats-next">What's next</a></li><li><a href="#recreate-this-setup">Recreate this setup</a><ul><li><a href="#1-system-packages-needs-sudo-run-them-in-your-own-terminal-not-through-an-ai-agent">1. System packages (needs sudo; run them in your own terminal, not through an AI agent)</a></li><li><a href="#2-llamacpp-prebuilt-binaries-vulkan-for-amd-cuda-for-nvidia">2. llama.cpp prebuilt binaries (Vulkan for AMD, CUDA for NVIDIA)</a></li><li><a href="#3-models-hugging-face-resumable">3. Models (Hugging Face, resumable)</a></li><li><a href="#4-servers-systemd-user-units">4. Servers (systemd user units)</a></li><li><a href="#5-find-your-own-offload-point-for-a-big-moe">5. Find your own offload point for a big MoE</a></li><li><a href="#6-colibri-only-if-you-have-lots-of-ram-and-fast-or-multiple-nvme-drives">6. Colibri (only if you have lots of RAM and fast or multiple NVMe drives)</a></li><li><a href="#7-wire-it-into-claude-code-or-any-agent">7. Wire it into Claude Code (or any agent)</a></li><li><a href="#8-measure-speed-and-quality-before-switching-models">8. Measure speed AND quality before switching models</a></li></ul></li><li><a href="#lab-notebook-every-result-and-log">Lab notebook: every result and log</a></li><li><a href="#sources">Sources</a></li></ul></nav></details>
+<details class="toc-mobile"><summary>Contents</summary><nav class="toc" aria-label="Contents"><ul><li><a href="#the-short-version">The short version</a></li><li><a href="#the-hardware">The hardware</a></li><li><a href="#the-contenders">The contenders</a></li><li><a href="#how-every-model-was-tested">How every model was tested</a></li><li><a href="#one-countdown-per-chip">One countdown per chip</a><ul><li><a href="#nvidia-rtx-5060-ti-16-gb-the-fast-tier">NVIDIA RTX 5060 Ti 16 GB: the fast tier</a></li><li><a href="#radeon-890m-igpu-the-best-tier">Radeon 890M iGPU: the best tier</a></li><li><a href="#radeon-rx-7600-8-gb-the-third-opinion">Radeon RX 7600 8 GB: the third opinion</a></li><li><a href="#xdna2-npu-built-into-the-ryzen-chip-background-jobs">XDNA2 NPU (built into the Ryzen chip): background jobs</a></li><li><a href="#bonus-round-the-rtx-5060-tis-deep-mode-the-strongest-reviewer-for-background-jobs">Bonus round: the RTX 5060 Ti's deep mode, the strongest reviewer for background jobs</a></li></ul></li><li><a href="#the-final-lineup">The final lineup</a></li><li><a href="#engines-compared-llamacpp-cuda-vulkan-rocm-ollama-strata-magnitude-and-more">Engines compared: llama.cpp (CUDA, Vulkan, ROCm), Ollama, Strata, Magnitude and more</a></li><li><a href="#where-local-ai-pays-off">Where local AI pays off</a></li><li><a href="#does-a-hybrid-ai-harness-really-save-claude-tokens-measured">Does a hybrid AI harness really save Claude tokens? (measured)</a><ul><li><a href="#is-a-16-gb-gpu-worth-it-or-is-the-cpu-enough">Is a 16 GB GPU worth it, or is the CPU enough?</a></li></ul></li><li><a href="#finding-the-sweet-spot-quality-vs-savings">Finding the sweet spot: quality vs savings</a></li><li><a href="#whats-next">What's next</a></li><li><a href="#recreate-this-setup">Recreate this setup</a><ul><li><a href="#1-system-packages-needs-sudo-run-them-in-your-own-terminal-not-through-an-ai-agent">1. System packages (needs sudo; run them in your own terminal, not through an AI agent)</a></li><li><a href="#2-llamacpp-prebuilt-binaries-vulkan-for-amd-cuda-for-nvidia">2. llama.cpp prebuilt binaries (Vulkan for AMD, CUDA for NVIDIA)</a></li><li><a href="#3-models-hugging-face-resumable">3. Models (Hugging Face, resumable)</a></li><li><a href="#4-servers-systemd-user-units">4. Servers (systemd user units)</a></li><li><a href="#5-find-your-own-offload-point-for-a-big-moe">5. Find your own offload point for a big MoE</a></li><li><a href="#6-colibri-only-if-you-have-lots-of-ram-and-fast-or-multiple-nvme-drives">6. Colibri (only if you have lots of RAM and fast or multiple NVMe drives)</a></li><li><a href="#7-wire-it-into-claude-code-or-any-agent">7. Wire it into Claude Code (or any agent)</a></li><li><a href="#8-measure-speed-and-quality-before-switching-models">8. Measure speed AND quality before switching models</a></li></ul></li><li><a href="#lab-notebook-every-result-and-log">Lab notebook: every result and log</a></li><li><a href="#sources">Sources</a></li></ul></nav></details>
 <p class="lead">Claude Code orchestrates; local models on spare hardware take the bulk, checkable work (scripts, log reading, screen reading, first-pass reviews), so Claude usage goes to the decisions. Every model below ran the same automated tests on a real production web app's code, pinned at one commit.</p>
 <h2 id="the-short-version">The short version<a class="headerlink" href="#the-short-version" title="Link to this section">#</a></h2>
 <p>A mini PC and two external GPUs from a hardware stash give five chips: the Ryzen CPU runs the scripts the models write, and the other four each run a local AI model. More than 30 models from a dozen labs, and ten inference engines (see Engines compared), competed for them on the same tests. Here is who won each chip and why; every number is backed by the full results further down.</p>
@@ -179,6 +179,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 </tbody>
 </table></div>
 <p>Gemma and Qwen3.6 miss different bugs: together they find 74 of 80. Newest win: a 0.77 GB draft model made the RX 7600's third opinion about 2.5× faster with the same answers. Claude Code stays the orchestrator and makes the final call on every review (see the deep tier's real-commit test below).</p>
+<p>Does this hybrid AI harness (Claude Code orchestrating, local models on the home PC's chips, scripts on the CPU) really save Claude tokens? Measured over four days of real work: a modest, real saving of about 1.3% of what Claude reads, mostly from reading screenshots and big files. Scripts on the CPU saved several times more, and a 16 GB GPU mainly buys speed (see "Does a hybrid AI harness really save Claude tokens?" below).</p>
 <details>
 <summary>Terms used on this page</summary>
 <ul>
@@ -1594,6 +1595,355 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <li>Caveat: the teammates' tool server predated the three-model mode, so they ran the two-model mode. The next round measures the three-model mode and the deep tier's commit pre-review against the Claude reviewer.</li>
 </ul>
 </details>
+<h2 id="does-a-hybrid-ai-harness-really-save-claude-tokens-measured">Does a hybrid AI harness really save Claude tokens? (measured)<a class="headerlink" href="#does-a-hybrid-ai-harness-really-save-claude-tokens-measured" title="Link to this section">#</a></h2>
+<p>This setup is a <strong>hybrid AI harness</strong>: Claude Code in the cloud orchestrates, local models on the home PC's chips take the reading and drafting, and deterministic scripts on the CPU do the counting and checking. Handing work off isn't free, though. Claude writes every request and reads every answer back. So does the prep and relay eat the savings? We measured four days of real work on a real software project (2026-10-18 to 22): 221 Claude Code transcripts, 17,105 Claude tool calls and 423 local-model calls.</p>
+<p><strong>The answer: a modest, real saving, and it depends on the job.</strong> Tokens are Claude's new-context tokens (≈ characters / 4; images by Anthropic's vision formula). The three columns differ in what Claude would have done without the hand-off.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Over 4 days</th>
+<th style="text-align: right;">Generous (Claude would have read everything handed over)</th>
+<th style="text-align: right;"><strong>Realistic</strong> (minus what Claude read anyway)</th>
+<th style="text-align: right;">Strict (any touch of the same files = no saving)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local model calls (423, 62 failed)</td>
+<td style="text-align: right;">+6.8 M</td>
+<td style="text-align: right;"><strong>+1.10 M</strong></td>
+<td style="text-align: right;">−0.09 M</td>
+</tr>
+<tr>
+<td>Bounded command-line tools</td>
+<td style="text-align: right;">+4 M</td>
+<td style="text-align: right;"><strong>+0.2 M</strong></td>
+<td style="text-align: right;">+0.2 M</td>
+</tr>
+<tr>
+<td>Fixed overhead (instructions, playbook, tool schemas)</td>
+<td style="text-align: right;">−0.48 M</td>
+<td style="text-align: right;"><strong>−0.48 M</strong></td>
+<td style="text-align: right;">−0.48 M</td>
+</tr>
+<tr>
+<td><strong>Net</strong></td>
+<td style="text-align: right;">≈ +10 M</td>
+<td style="text-align: right;"><strong>≈ +0.8 M (≈1.3% of ~60 M new-context tokens)</strong></td>
+<td style="text-align: right;">≈ −0.4 M</td>
+</tr>
+</tbody>
+</table></div>
+<p>A local result stays in Claude's context for a median of 33 more turns, which multiplies both the saving and the cost.</p>
+<p><strong>Where it pays, and where it doesn't (realistic accounting, per job type):</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job</th>
+<th style="text-align: right;">Calls</th>
+<th style="text-align: right;">Net for Claude</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Screenshot read as text</strong></td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;"><strong>+121k</strong></td>
+<td>~192 tokens per image instead of ~1,106 if Claude looked at it; 38 s median</td>
+</tr>
+<tr>
+<td><strong>Summarize / extract from big files</strong></td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;"><strong>+145k</strong> (strict: −117k)</td>
+<td>big input in, short answer out; but Claude opened the same file anyway 83% of the time</td>
+</tr>
+<tr>
+<td><strong>Scripted counting</strong> (a local model writes the script, the CPU runs it)</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;"><strong>+103k</strong></td>
+<td>the data never enters Claude's context</td>
+</tr>
+<tr>
+<td>Semantic code search</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">+9k</td>
+<td>about break-even with a careful grep</td>
+</tr>
+<tr>
+<td>Bug hunt / review on files</td>
+<td style="text-align: right;">134</td>
+<td style="text-align: right;">+689k (strict: −181k)</td>
+<td>median answer 1,413 tokens (p90 4,883), 20% cut off; Claude re-read the files after 54% of calls; ~1 claim in 14 held up</td>
+</tr>
+<tr>
+<td>Screenshot critique ("what's wrong here?")</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">+15k (strict: −9k)</td>
+<td>457 tokens per image, 7.3 min median, ~1 real finding in 60 claims</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Bounded tools</strong> (no model at all) save the most per call: an outline instead of reading a whole file saves up to ~10.9k tokens, a log digest ~7.4k, a test summary ~1.3k.</li>
+<li><strong>The pattern:</strong> when a local model reads something big and returns something small, Claude wins clearly. When it judges (bug verdicts, design critique), Claude re-checks the code anyway and the saving shrinks or turns into a small loss.</li>
+</ul>
+<p><strong>The hidden costs:</strong></p>
+<ul>
+<li><strong>Fixed overhead:</strong> the instructions every agent loads, the playbook it reads and the tool schemas came to ~0.48 M tokens, about half the gross saving. 19 of 97 reporting agents read them and then used no local tool.</li>
+<li><strong>Long, mostly wrong bug-hunt answers:</strong> the biggest gross saving on paper, but only ~7% of ~750 claims were confirmed, and Claude reads the code anyway.</li>
+<li><strong>Failures and waiting:</strong> 62 of 423 calls failed (15%; 25% overnight), 9 calls hung for 30 minutes each (6.2 h in total), and agents spent 41 h of wall time waiting on local calls. That costs no tokens, but the agents stall.</li>
+<li><strong>Script cross-checks:</strong> of 60 double-checked script jobs, the two independent scripts agreed 22 times and disagreed 20 times (33%), and each disagreement sent Claude back to look.</li>
+</ul>
+<p><strong>Problems → solutions (being applied):</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Long, mostly wrong bug-hunt answers</td>
+<td>Capped, structured claims (file:line + the quoted line + one sentence); drop any claim whose quoted line isn't in the file; one model by default; treat the answer as a checklist for files Claude reads anyway</td>
+</tr>
+<tr>
+<td>Hangs and timeouts</td>
+<td>A server-side deadline (~5 min) that returns a partial answer, a health check before fanning out, fail fast</td>
+</tr>
+<tr>
+<td>Fixed overhead eats half the gain</td>
+<td>Shorter always-loaded instructions, a 5-line digest instead of the playbook, tool schemas only where they're used</td>
+</tr>
+<tr>
+<td>Screenshot critique is costly and unreliable</td>
+<td>Transcribe screens as text; judge layout with deterministic checks</td>
+</tr>
+<tr>
+<td>Script cross-checks disagree a third of the time</td>
+<td>Return only the agreed result, or a short field-by-field diff</td>
+</tr>
+<tr>
+<td>Grouped search isn't a token saver</td>
+<td>Keep it for readability and safety; the real wins are outlines and digests</td>
+</tr>
+</tbody>
+</table></div>
+<p>The lesson: <strong>send local models the reading and counting, and keep the judging with Claude.</strong> Claude Code stays the orchestrator and makes every final call.</p>
+<h3 id="is-a-16-gb-gpu-worth-it-or-is-the-cpu-enough">Is a 16 GB GPU worth it, or is the CPU enough?<a class="headerlink" href="#is-a-16-gb-gpu-worth-it-or-is-the-cpu-enough" title="Link to this section">#</a></h3>
+<p><strong>Which chip carried the saving (realistic accounting):</strong> the Radeon 890M iGPU served 57% of the calls and 54% of the saving, including most of the winning jobs: 60 of 70 screenshot readings, 30 of 42 summaries and 38 of 63 scripted counts. The RTX 5060 Ti (fast and deep) carried ~40%, but 85% of that came from bug hunts. Under strict accounting the 5060 Ti's fast tier is the only chip clearly in the black (+112k), because its answers are short and arrive fast. So the wins don't require the card. <strong>What the card buys is speed.</strong></p>
+<p><strong>Speed: what an agent waits for</strong> (same jobs, from the local server's log):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job (typical size)</th>
+<th style="text-align: right;">RTX 5060 Ti</th>
+<th style="text-align: right;">Radeon 890M iGPU</th>
+<th style="text-align: right;">CPU only (estimate)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write speed, same 3.5–5.5K prompt</td>
+<td style="text-align: right;">142–148 tok/s</td>
+<td style="text-align: right;">~22 tok/s</td>
+<td style="text-align: right;">~11 tok/s</td>
+</tr>
+<tr>
+<td>Prompt reading</td>
+<td style="text-align: right;">1,900–2,150 tok/s</td>
+<td style="text-align: right;">357–490 tok/s</td>
+<td style="text-align: right;">~140 tok/s</td>
+</tr>
+<tr>
+<td>Scripted counting (1.6K in, 3.1K out)</td>
+<td style="text-align: right;"><strong>18.5 s</strong></td>
+<td style="text-align: right;">144 s</td>
+<td style="text-align: right;">~5 min</td>
+</tr>
+<tr>
+<td>Screenshot read as text</td>
+<td style="text-align: right;">6 s</td>
+<td style="text-align: right;">18 s</td>
+<td style="text-align: right;">~40 s</td>
+</tr>
+<tr>
+<td>Summary / extraction (2–4K in)</td>
+<td style="text-align: right;">3 s</td>
+<td style="text-align: right;">39 s</td>
+<td style="text-align: right;">~40 s</td>
+</tr>
+<tr>
+<td>Bug-hunt pass (9.7K in, 1.6K out)</td>
+<td style="text-align: right;">18 s</td>
+<td style="text-align: right;">220 s</td>
+<td style="text-align: right;">~3.5 min</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>The card is about 8× faster on scripts, 3× on screenshots and ~10× on summaries. An agent that waits 18 s keeps working; one that waits 2–7 minutes per call stalls.</li>
+<li><strong>The CPU column is an estimate:</strong> CPU-only llama.cpp on a small model measured 545 tok/s prompt and 23 tok/s write (memory-bound at ~23 GB/s effective), scaled to Gemma 4 26B-A4B (~2.15 GB read per token). A 1B vision model on the CPU reads page titles but misses about half the buttons (0.838).</li>
+</ul>
+<p><strong>Running cost:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Measured</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTX 5060 Ti idle, model loaded</td>
+<td>7.9 W</td>
+</tr>
+<tr>
+<td>Answering one request (3.8K in, 400 out)</td>
+<td>110–173 W, mean ~130 W, ≈0.26 Wh per request</td>
+</tr>
+<tr>
+<td>Card energy, this window's use (~0.6 h/day busy)</td>
+<td>0.31 kWh/day ≈ US$0.08/day</td>
+</tr>
+<tr>
+<td>Card energy, heavy use (8 h/day of batch jobs)</td>
+<td>1.43 kWh/day ≈ US$0.37/day</td>
+</tr>
+<tr>
+<td>CPU-only instead</td>
+<td>no card, but ~10× longer per job and it competes with the host for memory bandwidth: a 5-minute script job ≈ 2.5 Wh vs ≈ 0.7 Wh on the card (CPU power assumed)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Electricity at a Philippine residential rate of ₱15.06/kWh (October 2026), ₱58 per US$, plus 15% for the eGPU dock and PSU (assumptions).</p>
+<p><strong>Price and payback.</strong> The card costs US$770–810 street in October 2026 (it launched at $429 and rose with the memory shortage). Payback depends on how you pay for Claude:</p>
+<ul>
+<li><strong>API users:</strong> a saved token is worth $5–11.60 per million (one cache write, up to the 33 cache re-reads it would have stayed for), at Claude Opus 5.5 list prices.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Scenario (realistic)</th>
+<th style="text-align: right;">Saving per day</th>
+<th style="text-align: right;">Card payback (energy deducted)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Today, all local chips</td>
+<td style="text-align: right;">$1.10–2.50</td>
+<td style="text-align: right;">320–770 days</td>
+</tr>
+<tr>
+<td>After the fixes</td>
+<td style="text-align: right;">$1.55–3.60</td>
+<td style="text-align: right;">220–520 days</td>
+</tr>
+<tr>
+<td>Only the 5060 Ti's share</td>
+<td style="text-align: right;">$0.35–0.80</td>
+<td style="text-align: right;">3–8 years</td>
+</tr>
+<tr>
+<td><strong>Scripts on the CPU, no model</strong></td>
+<td style="text-align: right;"><strong>$3.70–35</strong></td>
+<td style="text-align: right;">no hardware needed</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Subscription users:</strong> no money changes hands per token; the saving is headroom. Local models freed ~1.3% of the context Claude would have read (~2% after the fixes), and scripts freed several times more. That's extra room inside your plan's limits, not free Claude usage, and Claude still counts every token it does read.</li>
+</ul>
+<p><strong>The third path: invest in scripts and let the CPU run them.</strong> Over the same four days Claude wrote 246k tokens of script code (218 reusable scripts plus 6 bounded command-line tools) and re-ran those scripts 1,318 times. Reading a run's result costs Claude a median of 230 tokens, against ~305 for a hand-run probe. A script pays back after a median of 2.3 runs (up to 8), 54 of 94 had already paid back, and the realised net is +2.8 M to +11 M tokens. Honest caveat: without scripts, agents would check less rather than spend those tokens; what scripts really buy is near-free re-checking (~200 tokens for a full regression run). Scripts can't read a screenshot or summarise free text, and a model can't beat a script at counting, invariants or regressions.</p>
+<p><strong>The verdict, as a ladder:</strong></p>
+<ol>
+<li><strong>Scripts on the CPU first.</strong> Cheap and exact, no GPU needed, they pay back after 2–8 runs, and they were the biggest saving in the data. A local model is good at drafting them.</li>
+<li><strong>A local model for what scripts can't do:</strong> reading screenshots as text (~190 vs ~1,100 Claude tokens per image), summarising and extracting from big inputs, drafting scripts and tests. Keep the judging with Claude.</li>
+<li><strong>A 16 GB GPU when that model work is daily and someone is waiting on it.</strong> It runs 26–35B mixture-of-experts models entirely in VRAM at 140–200 tok/s, reads screenshots, and turns a 2–7 minute iGPU wait into 5–20 s.
+   - Worth it for heavy daily agent use, screenshot- and reading-heavy work, privacy or offline use, and overnight batch jobs.
+   - Not worth it for light use, for hoping it will find your bugs, or for API money alone: at today's price the card's own share pays back in years, and the whole local setup in about 7 months to 2 years.
+   - 16 GB can't hold dense 27B+ models at high quality or 100B+ models; those need RAM offload (ExLlamaV3 42 tok/s, Strata 58–79 tok/s) or don't fit.</li>
+<li><strong>CPU-only models as the fallback.</strong> No purchase, but ~11 tok/s and minutes per job. Fine for small overnight jobs, too slow for an agent waiting in the loop. A recent iGPU with shared RAM (the 890M here) sits in between, and in this window it served most of the winning calls.</li>
+</ol>
+<details>
+<summary>Sources and method (checked 2026-10-22)</summary>
+<ul>
+<li>Data: 221 Claude Code transcripts (3 main sessions, 218 subagents) and the local server's call log, 2026-10-18 to 22. Read-only replays; tokens ≈ characters / 4. Power was sampled with nvidia-smi on 2026-10-22, and the CPU bench was a CPU-only llama.cpp run taken while the other tiers were serving.</li>
+<li><a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic pricing</a> (Claude Opus 5.5: $4 input, $5 5-minute cache write, $0.20 cache read, $20 output per MTok), read 2026-10-22.</li>
+<li>Electricity: Meralco October 2026 residential rate ₱15.0615/kWh (<a href="https://tribune.net.ph/2026/10/13/meralco-rate-hike-eats-into-october-bill-relief">Daily Tribune, 2026-10-13</a>, <a href="https://www.philstar.com/headlines/2026/10/14/2563111/meralco-rates-month">Philstar, 2026-10-14</a>).</li>
+<li>RTX 5060 Ti 16 GB price: US street median $804.99, Aug–Sep 2026 (<a href="https://www.tweaktown.com/news/113088/geforce-rtx-5060-ti-16gb-pricing-hits-dollars800-plus-in-the-us-as-memory-crisis-takes-hold/index.html">TweakTown</a>); lowest $766 on 2026-10-22 (<a href="https://gpuprix.com/us/gpus/geforce-rtx-5060-ti-16gb">gpuprix</a>); launch MSRP $429 (<a href="https://www.gadgetpilipinas.net/2025/04/nvidia-rtx-5060-ti-rtx-5060-ph/">Gadget Pilipinas, 2025-04</a>).</li>
+</ul>
+</details>
+<h2 id="finding-the-sweet-spot-quality-vs-savings">Finding the sweet spot: quality vs savings<a class="headerlink" href="#finding-the-sweet-spot-quality-vs-savings" title="Link to this section">#</a></h2>
+<p>The sweet spot is the setting where local work is good enough to trust <em>and</em> costs Claude fewer tokens than doing it itself. We found it with three levers, each measured rather than guessed.</p>
+<p><strong>The process: three levers.</strong></p>
+<ol>
+<li><strong>Which model on each chip.</strong> Every candidate ran the same tests: the suite score, the 24- and 80-item seeded-bug sets, unit tests, scripts, screenshots, and, for the deep tier, real commits with known blockers. Speed was measured on this rig too. Each chip gets the best quality that fits its job: the fast tier needs speed (Gemma 4, ~200 tok/s, 70/80 bugs), the deep tier needs accuracy (Muse Glimmer, ~52 tok/s, 78/80 bugs and the only real blocker caught).</li>
+<li><strong>How much to think, and how many models to ask.</strong>
+   - <strong>A capped thinking budget beats both extremes.</strong> On the 80 seeded bugs, Gemma 4 scores 0.875 with thinking off, 0.912 at 1,024 tokens and 0.963 at 2,048, but 0.05 with unbounded thinking. Qwen3.6 drops from 0.887 to 0.800 unbounded and takes 2.5 h instead of 7 min.
+   - <strong>Two tiers in parallel for bug hunts:</strong> Gemma finds 70/80 and Qwen3.6 71/80, but together they find 74/80.
+   - <strong>The slow, accurate deep tier only for background jobs</strong>, where nobody is waiting.
+   - <strong>Speed tricks only when the answers stay the same:</strong> the DFlash drafter (2.5× faster, same score) and ExLlamaV3 for big models in RAM (1.6× faster, 77 vs 78 of 80) passed; Strata (3–4× faster, 1–5 fewer of 80 bugs) didn't.</li>
+<li><strong>Which jobs to hand off at all, and how.</strong> The token economics above decide this. The wins are big-in, small-out jobs (screenshots read as text, scripted counting, outlines and digests); the losses are first-pass bug hunts and screenshot critique, plus the fixed overhead every agent pays. The efficiency fixes then trim the losses: capped structured answers, a quote-the-line filter and hard timeouts.</li>
+</ol>
+<p><strong>The result: today's sweet spot.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Where it runs</th>
+<th>Quality</th>
+<th>Claude-token cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Counting, invariants, regressions</td>
+<td><strong>Scripts on the CPU</strong> (a local model drafts them)</td>
+<td>exact; double-checked scripts must agree</td>
+<td>~230 tokens to read a run; pays back after 2–8 runs</td>
+</tr>
+<tr>
+<td>Reading screenshots</td>
+<td><strong>Local vision, text mode</strong></td>
+<td>~100 labels, dates and numbers read exactly, nothing invented</td>
+<td>~192 tokens per image instead of ~1,106</td>
+</tr>
+<tr>
+<td>Reading and summarising big inputs and logs</td>
+<td><strong>Local fast tier</strong> (Gemma 4)</td>
+<td>named the root error in 3 of 3 logs, in 1–5 s</td>
+<td>a short answer back; pays when Claude wouldn't open the file anyway</td>
+</tr>
+<tr>
+<td>Code structure, command output</td>
+<td><strong>Bounded tools, no model</strong></td>
+<td>kept 100% of what mattered in replays (96.7% for JSON)</td>
+<td>up to ~10.9k tokens saved per outline</td>
+</tr>
+<tr>
+<td>First-pass bug hunts</td>
+<td><strong>Optional:</strong> two tiers, capped thinking, claims must quote the line; never trusted on their own</td>
+<td>74/80 seeded bugs together, but ~1 real claim in 14</td>
+<td>median answer 1,413 tokens, and Claude re-reads the code</td>
+</tr>
+<tr>
+<td>Overnight deep review</td>
+<td><strong>Deep tier</strong> (Muse Glimmer), every claim verified by Claude</td>
+<td>78/80 seeded bugs; the only local model that caught a real blocker</td>
+<td>runs in the background; Claude reads only what survives verification</td>
+</tr>
+<tr>
+<td>Judging, reviews, fixes</td>
+<td><strong>Claude</strong></td>
+<td>the final call on every claim</td>
+<td>where Claude's tokens are worth spending</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rule of thumb:</strong> measure quality <em>and</em> Claude-token cost on your own work before switching anything. The sweet spot moves: the lineup changed at least three times in these four days (the deep tier twice, and the RX 7600 gained its drafter), and every change came from a measurement.</p>
 <h2 id="whats-next">What's next<a class="headerlink" href="#whats-next" title="Link to this section">#</a></h2>
 <ul>
 <li>Re-test llama.cpp's MoE expert cache with the NVIDIA card in a desktop x16 slot (on this OCuLink x4 link it was slower).</li>
