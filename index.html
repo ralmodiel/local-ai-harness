@@ -124,12 +124,12 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <div class="media"><div class="yt-embed"><iframe src="https://www.youtube-nocookie.com/embed/U8kv-bvX-ls?cc_load_policy=0&amp;rel=0" title="Video walkthrough" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><a class="yt" href="https://youtu.be/U8kv-bvX-ls" rel="noopener">&#9654; Watch on YouTube</a></div>
 </div></header>
 <div class="wrap layout">
-<aside class="toc-side"><nav class="toc" aria-label="Contents"><p class="toc-title">Contents</p><ul><li><a href="#the-short-version">The short version</a></li><li><a href="#the-hardware">The hardware</a></li><li><a href="#the-contenders">The contenders</a></li><li><a href="#how-every-model-was-tested">How every model was tested</a></li><li><a href="#one-countdown-per-chip">One countdown per chip</a><ul><li><a href="#nvidia-rtx-5060-ti-16-gb-the-fast-tier">NVIDIA RTX 5060 Ti 16 GB: the fast tier</a></li><li><a href="#radeon-890m-igpu-the-best-tier">Radeon 890M iGPU: the best tier</a></li><li><a href="#radeon-rx-7600-8-gb-the-third-opinion">Radeon RX 7600 8 GB: the third opinion</a></li><li><a href="#xdna2-npu-built-into-the-ryzen-chip-background-jobs">XDNA2 NPU (built into the Ryzen chip): background jobs</a></li><li><a href="#bonus-round-the-rtx-5060-tis-deep-mode-the-strongest-reviewer-for-background-jobs">Bonus round: the RTX 5060 Ti's deep mode, the strongest reviewer for background jobs</a></li></ul></li><li><a href="#the-final-lineup">The final lineup</a></li><li><a href="#where-local-ai-pays-off">Where local AI pays off</a></li><li><a href="#whats-next">What's next</a></li><li><a href="#recreate-this-setup">Recreate this setup</a><ul><li><a href="#1-system-packages-needs-sudo-run-them-in-your-own-terminal-not-through-an-ai-agent">1. System packages (needs sudo; run them in your own terminal, not through an AI agent)</a></li><li><a href="#2-llamacpp-prebuilt-binaries-vulkan-for-amd-cuda-for-nvidia">2. llama.cpp prebuilt binaries (Vulkan for AMD, CUDA for NVIDIA)</a></li><li><a href="#3-models-hugging-face-resumable">3. Models (Hugging Face, resumable)</a></li><li><a href="#4-servers-systemd-user-units">4. Servers (systemd user units)</a></li><li><a href="#5-find-your-own-offload-point-for-a-big-moe">5. Find your own offload point for a big MoE</a></li><li><a href="#6-colibri-only-if-you-have-lots-of-ram-and-fast-or-multiple-nvme-drives">6. Colibri (only if you have lots of RAM and fast or multiple NVMe drives)</a></li><li><a href="#7-wire-it-into-claude-code-or-any-agent">7. Wire it into Claude Code (or any agent)</a></li><li><a href="#8-measure-speed-and-quality-before-switching-models">8. Measure speed AND quality before switching models</a></li></ul></li><li><a href="#lab-notebook-every-result-and-log">Lab notebook: every result and log</a></li><li><a href="#sources">Sources</a></li></ul></nav></aside>
+<aside class="toc-side"><nav class="toc" aria-label="Contents"><p class="toc-title">Contents</p><ul><li><a href="#the-short-version">The short version</a></li><li><a href="#the-hardware">The hardware</a></li><li><a href="#the-contenders">The contenders</a></li><li><a href="#how-every-model-was-tested">How every model was tested</a></li><li><a href="#one-countdown-per-chip">One countdown per chip</a><ul><li><a href="#nvidia-rtx-5060-ti-16-gb-the-fast-tier">NVIDIA RTX 5060 Ti 16 GB: the fast tier</a></li><li><a href="#radeon-890m-igpu-the-best-tier">Radeon 890M iGPU: the best tier</a></li><li><a href="#radeon-rx-7600-8-gb-the-third-opinion">Radeon RX 7600 8 GB: the third opinion</a></li><li><a href="#xdna2-npu-built-into-the-ryzen-chip-background-jobs">XDNA2 NPU (built into the Ryzen chip): background jobs</a></li><li><a href="#bonus-round-the-rtx-5060-tis-deep-mode-the-strongest-reviewer-for-background-jobs">Bonus round: the RTX 5060 Ti's deep mode, the strongest reviewer for background jobs</a></li></ul></li><li><a href="#the-final-lineup">The final lineup</a></li><li><a href="#engines-compared-llamacpp-cuda-vulkan-rocm-ollama-strata-magnitude-and-more">Engines compared: llama.cpp (CUDA, Vulkan, ROCm), Ollama, Strata, Magnitude and more</a></li><li><a href="#where-local-ai-pays-off">Where local AI pays off</a></li><li><a href="#whats-next">What's next</a></li><li><a href="#recreate-this-setup">Recreate this setup</a><ul><li><a href="#1-system-packages-needs-sudo-run-them-in-your-own-terminal-not-through-an-ai-agent">1. System packages (needs sudo; run them in your own terminal, not through an AI agent)</a></li><li><a href="#2-llamacpp-prebuilt-binaries-vulkan-for-amd-cuda-for-nvidia">2. llama.cpp prebuilt binaries (Vulkan for AMD, CUDA for NVIDIA)</a></li><li><a href="#3-models-hugging-face-resumable">3. Models (Hugging Face, resumable)</a></li><li><a href="#4-servers-systemd-user-units">4. Servers (systemd user units)</a></li><li><a href="#5-find-your-own-offload-point-for-a-big-moe">5. Find your own offload point for a big MoE</a></li><li><a href="#6-colibri-only-if-you-have-lots-of-ram-and-fast-or-multiple-nvme-drives">6. Colibri (only if you have lots of RAM and fast or multiple NVMe drives)</a></li><li><a href="#7-wire-it-into-claude-code-or-any-agent">7. Wire it into Claude Code (or any agent)</a></li><li><a href="#8-measure-speed-and-quality-before-switching-models">8. Measure speed AND quality before switching models</a></li></ul></li><li><a href="#lab-notebook-every-result-and-log">Lab notebook: every result and log</a></li><li><a href="#sources">Sources</a></li></ul></nav></aside>
 <main class="doc">
-<details class="toc-mobile"><summary>Contents</summary><nav class="toc" aria-label="Contents"><ul><li><a href="#the-short-version">The short version</a></li><li><a href="#the-hardware">The hardware</a></li><li><a href="#the-contenders">The contenders</a></li><li><a href="#how-every-model-was-tested">How every model was tested</a></li><li><a href="#one-countdown-per-chip">One countdown per chip</a><ul><li><a href="#nvidia-rtx-5060-ti-16-gb-the-fast-tier">NVIDIA RTX 5060 Ti 16 GB: the fast tier</a></li><li><a href="#radeon-890m-igpu-the-best-tier">Radeon 890M iGPU: the best tier</a></li><li><a href="#radeon-rx-7600-8-gb-the-third-opinion">Radeon RX 7600 8 GB: the third opinion</a></li><li><a href="#xdna2-npu-built-into-the-ryzen-chip-background-jobs">XDNA2 NPU (built into the Ryzen chip): background jobs</a></li><li><a href="#bonus-round-the-rtx-5060-tis-deep-mode-the-strongest-reviewer-for-background-jobs">Bonus round: the RTX 5060 Ti's deep mode, the strongest reviewer for background jobs</a></li></ul></li><li><a href="#the-final-lineup">The final lineup</a></li><li><a href="#where-local-ai-pays-off">Where local AI pays off</a></li><li><a href="#whats-next">What's next</a></li><li><a href="#recreate-this-setup">Recreate this setup</a><ul><li><a href="#1-system-packages-needs-sudo-run-them-in-your-own-terminal-not-through-an-ai-agent">1. System packages (needs sudo; run them in your own terminal, not through an AI agent)</a></li><li><a href="#2-llamacpp-prebuilt-binaries-vulkan-for-amd-cuda-for-nvidia">2. llama.cpp prebuilt binaries (Vulkan for AMD, CUDA for NVIDIA)</a></li><li><a href="#3-models-hugging-face-resumable">3. Models (Hugging Face, resumable)</a></li><li><a href="#4-servers-systemd-user-units">4. Servers (systemd user units)</a></li><li><a href="#5-find-your-own-offload-point-for-a-big-moe">5. Find your own offload point for a big MoE</a></li><li><a href="#6-colibri-only-if-you-have-lots-of-ram-and-fast-or-multiple-nvme-drives">6. Colibri (only if you have lots of RAM and fast or multiple NVMe drives)</a></li><li><a href="#7-wire-it-into-claude-code-or-any-agent">7. Wire it into Claude Code (or any agent)</a></li><li><a href="#8-measure-speed-and-quality-before-switching-models">8. Measure speed AND quality before switching models</a></li></ul></li><li><a href="#lab-notebook-every-result-and-log">Lab notebook: every result and log</a></li><li><a href="#sources">Sources</a></li></ul></nav></details>
+<details class="toc-mobile"><summary>Contents</summary><nav class="toc" aria-label="Contents"><ul><li><a href="#the-short-version">The short version</a></li><li><a href="#the-hardware">The hardware</a></li><li><a href="#the-contenders">The contenders</a></li><li><a href="#how-every-model-was-tested">How every model was tested</a></li><li><a href="#one-countdown-per-chip">One countdown per chip</a><ul><li><a href="#nvidia-rtx-5060-ti-16-gb-the-fast-tier">NVIDIA RTX 5060 Ti 16 GB: the fast tier</a></li><li><a href="#radeon-890m-igpu-the-best-tier">Radeon 890M iGPU: the best tier</a></li><li><a href="#radeon-rx-7600-8-gb-the-third-opinion">Radeon RX 7600 8 GB: the third opinion</a></li><li><a href="#xdna2-npu-built-into-the-ryzen-chip-background-jobs">XDNA2 NPU (built into the Ryzen chip): background jobs</a></li><li><a href="#bonus-round-the-rtx-5060-tis-deep-mode-the-strongest-reviewer-for-background-jobs">Bonus round: the RTX 5060 Ti's deep mode, the strongest reviewer for background jobs</a></li></ul></li><li><a href="#the-final-lineup">The final lineup</a></li><li><a href="#engines-compared-llamacpp-cuda-vulkan-rocm-ollama-strata-magnitude-and-more">Engines compared: llama.cpp (CUDA, Vulkan, ROCm), Ollama, Strata, Magnitude and more</a></li><li><a href="#where-local-ai-pays-off">Where local AI pays off</a></li><li><a href="#whats-next">What's next</a></li><li><a href="#recreate-this-setup">Recreate this setup</a><ul><li><a href="#1-system-packages-needs-sudo-run-them-in-your-own-terminal-not-through-an-ai-agent">1. System packages (needs sudo; run them in your own terminal, not through an AI agent)</a></li><li><a href="#2-llamacpp-prebuilt-binaries-vulkan-for-amd-cuda-for-nvidia">2. llama.cpp prebuilt binaries (Vulkan for AMD, CUDA for NVIDIA)</a></li><li><a href="#3-models-hugging-face-resumable">3. Models (Hugging Face, resumable)</a></li><li><a href="#4-servers-systemd-user-units">4. Servers (systemd user units)</a></li><li><a href="#5-find-your-own-offload-point-for-a-big-moe">5. Find your own offload point for a big MoE</a></li><li><a href="#6-colibri-only-if-you-have-lots-of-ram-and-fast-or-multiple-nvme-drives">6. Colibri (only if you have lots of RAM and fast or multiple NVMe drives)</a></li><li><a href="#7-wire-it-into-claude-code-or-any-agent">7. Wire it into Claude Code (or any agent)</a></li><li><a href="#8-measure-speed-and-quality-before-switching-models">8. Measure speed AND quality before switching models</a></li></ul></li><li><a href="#lab-notebook-every-result-and-log">Lab notebook: every result and log</a></li><li><a href="#sources">Sources</a></li></ul></nav></details>
 <p class="lead">Claude Code orchestrates; local models on spare hardware take the bulk, checkable work (scripts, log reading, screen reading, first-pass reviews), so Claude usage goes to the decisions. Every model below ran the same automated tests on a real production web app's code, pinned at one commit.</p>
 <h2 id="the-short-version">The short version<a class="headerlink" href="#the-short-version" title="Link to this section">#</a></h2>
-<p>A mini PC and two external GPUs from a hardware stash give five chips: the Ryzen CPU runs the scripts the models write, and the other four each run a local AI model. More than 30 models from a dozen labs, and a second inference engine, competed for them on the same tests. Here is who won each chip and why; every number is backed by the full results further down.</p>
+<p>A mini PC and two external GPUs from a hardware stash give five chips: the Ryzen CPU runs the scripts the models write, and the other four each run a local AI model. More than 30 models from a dozen labs, and seven inference engines (see Engines compared), competed for them on the same tests. Here is who won each chip and why; every number is backed by the full results further down.</p>
 <div class="table-wrap wide"><table>
 <thead>
 <tr>
@@ -1136,6 +1136,144 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <p><strong>The two tiers miss different bugs.</strong> Gemma finds 70/80 and the iGPU Qwen 71/80; together they find 74/80.</p>
 <ul>
 <li><code>local_ask quality="both"</code> asks both in parallel and returns both answers, for bug hunts and reviews.</li>
+</ul>
+<h2 id="engines-compared-llamacpp-cuda-vulkan-rocm-ollama-strata-magnitude-and-more">Engines compared: llama.cpp (CUDA, Vulkan, ROCm), Ollama, Strata, Magnitude and more<a class="headerlink" href="#engines-compared-llamacpp-cuda-vulkan-rocm-ollama-strata-magnitude-and-more" title="Link to this section">#</a></h2>
+<p>A model is the file; an engine is the program that runs it. The same file can run noticeably faster or slower depending on the engine, and occasionally score differently, so engines got the same treatment as models: same file, same prompts, speed and answers measured.</p>
+<p><strong>Head-to-head on one model (2026-10-21).</strong> Qwen3.5 9B (Unsloth UD-Q4_K_XL, the file Magnitude downloads), RTX 5060 Ti, a ~3.5K-token code-review prompt, 512 tokens out, temperature 0, thinking off, a fresh prompt every run so no engine could reuse a cached one; average of runs 2–4.</p>
+<div class="table-wrap wide"><table>
+<thead>
+<tr>
+<th>Engine</th>
+<th style="text-align: right;">Writing (tok/s)</th>
+<th style="text-align: right;">Prompt reading (tok/s)</th>
+<th style="text-align: right;">Time to first token</th>
+<th style="text-align: right;">VRAM in use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Magnitude 0.2.10</strong> (its own auto-tuned kernels + speculative drafting)</td>
+<td style="text-align: right;"><strong>84</strong></td>
+<td style="text-align: right;">2,440</td>
+<td style="text-align: right;">1.4 s</td>
+<td style="text-align: right;">10.6 GB</td>
+</tr>
+<tr>
+<td>llama.cpp CUDA, with the model's built-in MTP drafter</td>
+<td style="text-align: right;">70.5</td>
+<td style="text-align: right;">2,780</td>
+<td style="text-align: right;">1.3 s</td>
+<td style="text-align: right;">6.3 GB</td>
+</tr>
+<tr>
+<td><strong>llama.cpp CUDA</strong>, plain</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;"><strong>3,060</strong></td>
+<td style="text-align: right;"><strong>1.1 s</strong></td>
+<td style="text-align: right;"><strong>5.9 GB</strong></td>
+</tr>
+<tr>
+<td>Ollama 0.40.7, same file</td>
+<td style="text-align: right;">67.6</td>
+<td style="text-align: right;">3,040</td>
+<td style="text-align: right;">1.1 s</td>
+<td style="text-align: right;">6.0 GB</td>
+</tr>
+<tr>
+<td>Ollama 0.40.7, its own library build (<code>qwen3.5:9b</code>)</td>
+<td style="text-align: right;">68.5</td>
+<td style="text-align: right;">3,020</td>
+<td style="text-align: right;">1.2 s</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Magnitude writes about 20–25% faster</strong> than llama.cpp on the same file, thanks to its speculative drafting and per-chip tuning. It reads prompts about 20% slower and reserved almost twice the VRAM (likely for its 256K default context). Its catalog on this machine tops out at 12B-class models, so it can't host the 26–35B models the tiers use today; worth re-checking as its catalog grows.</li>
+<li><strong>Ollama matches llama.cpp</strong> once the model is loaded (it builds on the same ggml core); the first request after loading waited 54 s while it loaded the model. An older Ollama (0.11.3) didn't know this model's architecture at all, so keep it current.</li>
+<li><strong>llama.cpp's MTP drafter added only ~5% here</strong> (48% of drafted tokens accepted). On Gemma 4 26B and Qwen3.6 it adds much more, so drafting gains depend on the model.</li>
+</ul>
+<p><strong>Everything else measured on this box:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Engine</th>
+<th>Where it ran</th>
+<th>Result</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>llama.cpp, CUDA build</strong></td>
+<td>RTX 5060 Ti</td>
+<td>Gemma 4 26B: 3,869 tok/s prompt, 140 tok/s writing (≈200 with MTP)</td>
+<td>Fast and deep tiers</td>
+</tr>
+<tr>
+<td>llama.cpp, Vulkan build</td>
+<td>RTX 5060 Ti</td>
+<td>Same model: 3,238 / 123 tok/s; CUDA is 14–20% faster on NVIDIA</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>llama.cpp, Vulkan build</strong></td>
+<td>Radeon 890M, RX 7600</td>
+<td>890M: Qwen3.6-35B ~23 tok/s; RX 7600: Qwen3.5 9B 834 / 39 tok/s, Ornith 9B ~95 with DFlash</td>
+<td>Best tier, third opinion</td>
+</tr>
+<tr>
+<td>llama.cpp, ROCm build</td>
+<td>Radeon 890M</td>
+<td>25.0 vs Vulkan's 23.4 tok/s writing, 471 vs 478 prompt; needs a GPU-ID override</td>
+<td>Vulkan kept (no override needed)</td>
+</tr>
+<tr>
+<td>llama.cpp, ROCm build</td>
+<td>RX 7600</td>
+<td>Doesn't run: Ubuntu's ROCm libraries have no kernels for this chip</td>
+<td>—</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Niko1221/Strata">Strata</a></td>
+<td>RTX 5060 Ti</td>
+<td>3–4× faster on big MoE models that spill into RAM (58–79 vs ~19 tok/s), 1–5 fewer of 80 seeded bugs</td>
+<td>On-demand option (see the deep tier)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/FastFlowLM/FastFlowLM">FastFlowLM</a></td>
+<td>XDNA2 NPU</td>
+<td>Qwen3.6-35B ~18 tok/s, 20/23 scripts; a few watts</td>
+<td>NPU (in reserve)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/JustVugg/colibri">Colibri</a></td>
+<td>NVIDIA + RAM + SSDs</td>
+<td>GLM-5.2 int4 streamed from both SSDs at ~0.4–0.6 tok/s</td>
+<td>Overnight experiments only</td>
+</tr>
+<tr>
+<td>PrismML's llama.cpp fork</td>
+<td>RTX 5060 Ti</td>
+<td>Ternary-Bonsai-2-27B: ~48 tok/s, 64/80 seeded bugs</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>What this shows:</strong></p>
+<ul>
+<li><strong>On NVIDIA, use llama.cpp's CUDA build;</strong> on AMD GPUs, the Vulkan build is the simple, fast default (ROCm adds setup for little or no gain here).</li>
+<li><strong>Wrappers cost little once loaded.</strong> Ollama runs at llama.cpp's speed, so pick it for convenience and llama.cpp for control (exact flags, drafters, multiple GPUs).</li>
+<li><strong>The newer engines are genuinely faster in their niche:</strong> Strata for MoE models bigger than the card, Magnitude for small models that fit. Always re-run the quality tests too: Strata's speed came with a few more missed bugs.</li>
+<li><strong>Speculative drafting is the biggest single speed lever,</strong> in any engine: DFlash took the RX 7600 from ~38 to ~95 tok/s.</li>
+</ul>
+<p><strong>Not tried yet</strong> (popular, but outside this box's sweet spot or still on the list):</p>
+<ul>
+<li><strong>ik_llama.cpp:</strong> a llama.cpp fork tuned for CPU+GPU splits of big MoE models; a natural next test for the RAM-offloaded runs.</li>
+<li><strong>vLLM and SGLang:</strong> built for serving many users at once from models that fit fully in VRAM; a single user on 16 GB gains little.</li>
+<li><strong>ExLlamaV3:</strong> fast NVIDIA-only engine with its own quant format; worth a look for the fast tier.</li>
+<li><strong>LM Studio, Lemonade, GAIA:</strong> friendly apps on top of llama.cpp and FastFlowLM, so expect their engines' speeds.</li>
+<li><strong>KTransformers:</strong> CPU+GPU hybrid for very large MoE models.</li>
 </ul>
 <h2 id="where-local-ai-pays-off">Where local AI pays off<a class="headerlink" href="#where-local-ai-pays-off" title="Link to this section">#</a></h2>
 <p><strong>Where the local tiers shine (measured overnight, 2026-10-19/20, inside real QA work):</strong> Claude teammates handed specific jobs to the local models and checked every answer against a known result.</p>
@@ -2414,6 +2552,20 @@ cd .. &amp;&amp; ./start-here.sh --model glm-5.2 --yes --backend cpu --dir &lt;m
 <td style="text-align: right;">421</td>
 </tr>
 <tr>
+<td>MiMo-V2.6-Distill-Qwen-9B_Q4_K_M (rx7600 vk) nothink</td>
+<td style="text-align: right;"><strong>0.652</strong></td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">673</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">728</td>
+</tr>
+<tr>
 <td>Ling-3.0-tiny Q4_K_M (rx7600 vk)</td>
 <td style="text-align: right;"><strong>0.604</strong></td>
 <td style="text-align: right;">1.00</td>
@@ -2510,6 +2662,20 @@ cd .. &amp;&amp; ./start-here.sh --model glm-5.2 --yes --backend cpu --dir &lt;m
 <td style="text-align: right;">1545</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">375</td>
+</tr>
+<tr>
+<td>K2-Horizon-3.7B_Q4_K_M (rx7600 vk) nothink</td>
+<td style="text-align: right;"><strong>0.525</strong></td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1395</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">1130</td>
 </tr>
 <tr>
 <td>Mistral-Nemo-12B Q4_K_M (rx7600 vk)</td>
@@ -3294,6 +3460,20 @@ cd .. &amp;&amp; ./start-here.sh --model glm-5.2 --yes --backend cpu --dir &lt;m
 <td>bugbig 0.88</td>
 <td style="text-align: right;">334</td>
 <td style="text-align: right;">79</td>
+</tr>
+<tr>
+<td>MiMo-V2.6-Distill-Qwen-9B_Q4_K_M (rx7600 vk) think budget1024</td>
+<td style="text-align: right;">0.438</td>
+<td>bugbig 0.44</td>
+<td style="text-align: right;">1802</td>
+<td style="text-align: right;">36</td>
+</tr>
+<tr>
+<td>K2-Horizon-3.7B_Q4_K_M (rx7600 vk) think budget1024</td>
+<td style="text-align: right;">0.150</td>
+<td>bugbig 0.15</td>
+<td style="text-align: right;">1516</td>
+<td style="text-align: right;">56</td>
 </tr>
 </tbody>
 </table></div>
