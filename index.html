@@ -1292,7 +1292,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <p>So far the local tiers pay off on bulk, checkable work (scripts, extraction, screenshot triage, cross-checks), not on finding subtle bugs in real code.</p>
 </li>
 <li>The cheapest win wasn't a model at all: small deterministic tools that bound command output (a code outliner, grouped search, test/log/diff/JSON summarizers). Replayed on the commands of 95 past agent sessions they kept 100% of what mattered (96.7% for JSON) and cut the output 3–40× (outline 2.6×, search 4.2×, test output 30×, logs 30×, diffs 39×), so the frontier model reads far less.</li>
-<li>One QA round aimed the local tiers at their strengths. Screenshot triage: the local vision model pre-screened 14 of 16 screenshots, so the reviewer opened one; one of its leads was confirmed (a phone layout pushing a data grid below the fold), the rest were cosmetic or wrong.</li>
+<li>In one QA round, the local tiers worked to their strengths. For screenshot triage, the local vision model pre-screened 14 of 16 screenshots, so the reviewer only had to open one, and it flagged a real phone-layout problem (a data grid pushed below the fold). Its other leads were minor, and Claude checked each one.</li>
 </ul>
 <details>
 <summary>Script generation: the full benchmark</summary>
