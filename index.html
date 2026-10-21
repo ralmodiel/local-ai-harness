@@ -1695,7 +1695,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <li><strong>Failures and waiting:</strong> 62 of 423 calls failed (15%; 25% overnight), 9 calls hung for 30 minutes each (6.2 h in total), and agents spent 41 h of wall time waiting on local calls. That costs no tokens, but the agents stall.</li>
 <li><strong>Script cross-checks:</strong> of 60 double-checked script jobs, the two independent scripts agreed 22 times and disagreed 20 times (33%), and each disagreement sent Claude back to look.</li>
 </ul>
-<p><strong>Problems → solutions (being applied):</strong></p>
+<p><strong>Problems → solutions (now applied):</strong></p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -1730,6 +1730,72 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 </tr>
 </tbody>
 </table></div>
+<p><strong>Before → after the fixes</strong> (a fixed benchmark on the same machine, old version vs new):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th style="text-align: right;">Before</th>
+<th style="text-align: right;">After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bug-hunt answer Claude reads, per call</td>
+<td style="text-align: right;">~3,200 tokens</td>
+<td style="text-align: right;"><strong>~290 tokens (−91%)</strong></td>
+</tr>
+<tr>
+<td>Claims to read across 6 hunts</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr>
+<td>Seeded bug named</td>
+<td style="text-align: right;">6/6</td>
+<td style="text-align: right;">6/6</td>
+</tr>
+<tr>
+<td>… at the exact line</td>
+<td style="text-align: right;">4/6</td>
+<td style="text-align: right;"><strong>6/6</strong></td>
+</tr>
+<tr>
+<td>Hunt wall time (median)</td>
+<td style="text-align: right;">109 s</td>
+<td style="text-align: right;">64 s</td>
+</tr>
+<tr>
+<td>Best tier hitting its answer cap</td>
+<td style="text-align: right;">3/6</td>
+<td style="text-align: right;">0/6</td>
+</tr>
+<tr>
+<td>Script cross-check correct</td>
+<td style="text-align: right;">1/2</td>
+<td style="text-align: right;">2/2</td>
+</tr>
+<tr>
+<td>Text read from a contact sheet</td>
+<td style="text-align: right;">5.5% (fast tier, looped) / 78% (best tier)</td>
+<td style="text-align: right;">92.5%</td>
+</tr>
+<tr>
+<td>Calls stuck for 30 minutes</td>
+<td style="text-align: right;">9 overnight</td>
+<td style="text-align: right;">none: every call returns by its deadline (≤5 min)</td>
+</tr>
+<tr>
+<td>Tool schemas loaded into every context</td>
+<td style="text-align: right;">10.0K characters</td>
+<td style="text-align: right;">5.8K characters</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Why calls hung:</strong> the tool server answered calls strictly one after another while ~40 agents shared it. It now serves them concurrently.</li>
+<li><strong>The quote-the-line check</strong> removes about a quarter of the ungrounded claims and lost no real bug. Most false claims quote real code with the wrong reasoning, though, so the savings come mainly from the compact format, the answer cap and merging the tiers' answers.</li>
+</ul>
 <p>The lesson: <strong>send local models the reading and counting, and keep the judging with Claude.</strong> Claude Code stays the orchestrator and makes every final call.</p>
 <h3 id="is-a-16-gb-gpu-worth-it-or-is-the-cpu-enough">Is a 16 GB GPU worth it, or is the CPU enough?<a class="headerlink" href="#is-a-16-gb-gpu-worth-it-or-is-the-cpu-enough" title="Link to this section">#</a></h3>
 <p><strong>Which chip carried the saving (realistic accounting):</strong> the Radeon 890M iGPU served 57% of the calls and 54% of the saving, including most of the winning jobs: 60 of 70 screenshot readings, 30 of 42 summaries and 38 of 63 scripted counts. The RTX 5060 Ti (fast and deep) carried ~40%, but 85% of that came from bug hunts. Under strict accounting the 5060 Ti's fast tier is the only chip clearly in the black (+112k), because its answers are short and arrive fast. So the wins don't require the card. <strong>What the card buys is speed.</strong></p>
@@ -1837,7 +1903,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td style="text-align: right;">320–770 days</td>
 </tr>
 <tr>
-<td>After the fixes</td>
+<td>After the fixes (estimate)</td>
 <td style="text-align: right;">$1.55–3.60</td>
 <td style="text-align: right;">220–520 days</td>
 </tr>
@@ -1854,7 +1920,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 </tbody>
 </table></div>
 <ul>
-<li><strong>Subscription users:</strong> no money changes hands per token; the saving is headroom. Local models freed ~1.3% of the context Claude would have read (~2% after the fixes), and scripts freed several times more. That's extra room inside your plan's limits, not free Claude usage, and Claude still counts every token it does read.</li>
+<li><strong>Subscription users:</strong> no money changes hands per token; the saving is headroom. Local models freed ~1.3% of the context Claude would have read (~2% after the fixes, estimated), and scripts freed several times more. That's extra room inside your plan's limits, not free Claude usage, and Claude still counts every token it does read.</li>
 </ul>
 <p><strong>The third path: invest in scripts and let the CPU run them.</strong> Over the same four days Claude wrote 246k tokens of script code (218 reusable scripts plus 6 bounded command-line tools) and re-ran those scripts 1,318 times. Reading a run's result costs Claude a median of 230 tokens, against ~305 for a hand-run probe. A script pays back after a median of 2.3 runs (up to 8), 54 of 94 had already paid back, and the realised net is +2.8 M to +11 M tokens. Honest caveat: without scripts, agents would check less rather than spend those tokens; what scripts really buy is near-free re-checking (~200 tokens for a full regression run). Scripts can't read a screenshot or summarise free text, and a model can't beat a script at counting, invariants or regressions.</p>
 <p><strong>The verdict, as a ladder:</strong></p>
@@ -1886,7 +1952,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
    - <strong>Two tiers in parallel for bug hunts:</strong> Gemma finds 70/80 and Qwen3.6 71/80, but together they find 74/80.
    - <strong>The slow, accurate deep tier only for background jobs</strong>, where nobody is waiting.
    - <strong>Speed tricks only when the answers stay the same:</strong> the DFlash drafter (2.5× faster, same score) and ExLlamaV3 for big models in RAM (1.6× faster, 77 vs 78 of 80) passed; Strata (3–4× faster, 1–5 fewer of 80 bugs) didn't.</li>
-<li><strong>Which jobs to hand off at all, and how.</strong> The token economics above decide this. The wins are big-in, small-out jobs (screenshots read as text, scripted counting, outlines and digests); the losses are first-pass bug hunts and screenshot critique, plus the fixed overhead every agent pays. The efficiency fixes then trim the losses: capped structured answers, a quote-the-line filter and hard timeouts.</li>
+<li><strong>Which jobs to hand off at all, and how.</strong> The token economics above decide this. The wins are big-in, small-out jobs (screenshots read as text, scripted counting, outlines and digests); the losses are first-pass bug hunts and screenshot critique, plus the fixed overhead every agent pays. The efficiency fixes then trim the losses: capped structured answers, a quote-the-line filter and hard timeouts. On a fixed benchmark they cut the bug-hunt answer Claude reads from ~3,200 to ~290 tokens per call, still named the seeded bug 6 of 6 times (now 6 of 6 at the exact line, up from 4), and no call hangs past its deadline.</li>
 </ol>
 <p><strong>The result: today's sweet spot.</strong></p>
 <div class="table-wrap"><table>
@@ -1927,7 +1993,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <td>First-pass bug hunts</td>
 <td><strong>Optional:</strong> two tiers, capped thinking, claims must quote the line; never trusted on their own</td>
 <td>74/80 seeded bugs together, but ~1 real claim in 14</td>
-<td>median answer 1,413 tokens, and Claude re-reads the code</td>
+<td>~290 tokens per call in the compact format (was ~3,200); Claude still re-reads the code</td>
 </tr>
 <tr>
 <td>Overnight deep review</td>
