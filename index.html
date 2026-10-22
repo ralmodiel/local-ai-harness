@@ -1596,7 +1596,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 </ul>
 </details>
 <h2 id="does-a-hybrid-ai-harness-really-save-claude-tokens-measured">Does a hybrid AI harness really save Claude tokens? (measured)<a class="headerlink" href="#does-a-hybrid-ai-harness-really-save-claude-tokens-measured" title="Link to this section">#</a></h2>
-<p>This setup is a <strong>hybrid AI harness</strong>: Claude Code in the cloud orchestrates, local models on the home PC's chips take the reading and drafting, and deterministic scripts on the CPU do the counting and checking. Handing work off isn't free, though. Claude writes every request and reads every answer back. So does the prep and relay eat the savings? We measured four days of real work on a real software project (2026-10-18 to 22): 221 Claude Code transcripts, 17,105 Claude tool calls and 423 local-model calls.</p>
+<p>This setup is a <strong>hybrid AI harness</strong>: Claude Code orchestrates (with Claude itself running in the cloud), local models on the home PC's chips take the reading and drafting, and deterministic scripts on the CPU do the counting and checking. Handing work off isn't free, though. Claude writes every request and reads every answer back. So does the prep and relay eat the savings? We measured four days of real work on a real software project (2026-10-18 to 22): 221 Claude Code transcripts, 17,105 Claude tool calls and 423 local-model calls.</p>
 <p><strong>The answer: a modest, real saving, and it depends on the job.</strong> Tokens are Claude's new-context tokens (≈ characters / 4; images by Anthropic's vision formula). The three columns differ in what Claude would have done without the hand-off.</p>
 <div class="table-wrap"><table>
 <thead>
