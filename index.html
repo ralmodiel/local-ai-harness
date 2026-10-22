@@ -53,6 +53,11 @@ font-variant-numeric:tabular-nums}
 .yt-embed { position: relative; aspect-ratio: 16 / 9; width: 100%; border-radius: 14px; overflow: hidden; background: #000; }
 .yt-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .media{margin-top:28px;max-width:860px}
+.videos{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin:0 0 28px;max-width:1100px}
+@media (min-width:900px){.videos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.videos figure{margin:0}
+.videos figcaption{margin-top:8px;font-size:.92rem;line-height:1.4;font-weight:600}
+.videos figcaption a{color:inherit}
 .media video{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);background:#000}
 .yt{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-weight:600}
 /* layout */
@@ -120,6 +125,7 @@ footer .wrap{padding-top:20px;padding-bottom:32px}
 <div class="topbar"><span class="eyebrow">Field notes · local LLMs on consumer hardware</span><button class="theme-btn" id="theme" type="button">Theme</button></div>
 <h1>Local AI from a Hardware Stash</h1>
 <p class="pitch">Spare hardware, one mini PC, four local AI chips. Claude Code plans, delegates and checks; local models do the bulk work, so Claude usage goes to the work that needs it. 30+ models from a dozen labs went through the same automated tests: here is the winner for each chip, and every number behind it.</p>
+<div class="videos"><figure><div class="yt-embed"><iframe src="https://www.youtube-nocookie.com/embed/MZisgSAyAEk?cc_load_policy=0&amp;rel=0" title="Gemma 4 vs gpt-oss vs Qwen vs Muse Glimmer: Local AI Countdown" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption><a href="https://youtu.be/MZisgSAyAEk" rel="noopener">Gemma 4 vs gpt-oss vs Qwen vs Muse Glimmer: Local AI Countdown</a></figcaption></figure><figure><div class="yt-embed"><iframe src="https://www.youtube-nocookie.com/embed/mONIWpT5Zf4?cc_load_policy=0&amp;rel=0" title="Is a 16 GB GPU Worth It for AI Coding, or Is the CPU Enough?" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption><a href="https://youtu.be/mONIWpT5Zf4" rel="noopener">Is a 16 GB GPU Worth It for AI Coding, or Is the CPU Enough?</a></figcaption></figure></div>
 <ul class="stats"><li class="stat"><b>30+</b><span>models from a dozen labs, one set of automated tests</span></li><li class="stat"><b>80 bugs</b><span>seeded in a real production web app, plus 23 script, 9 unit-test and 20 screenshot tasks</span></li><li class="stat"><b>~200 tok/s</b><span>fast tier: Gemma 4 26B on the 16 GB RTX 5060 Ti</span></li><li class="stat"><b>177B</b><span>a 177B model on a 16 GB card + system RAM, ~18–33 tok/s</span></li><li class="stat"><b>80 / 80</b><span>seeded bugs found by Meta&#x27;s Muse Glimmer 30B on one 16 GB card</span></li></ul>
 <div class="media"><div class="yt-embed"><iframe src="https://www.youtube-nocookie.com/embed/U8kv-bvX-ls?cc_load_policy=0&amp;rel=0" title="Video walkthrough" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><a class="yt" href="https://youtu.be/U8kv-bvX-ls" rel="noopener">&#9654; Watch on YouTube</a></div>
 </div></header>
